@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --header-height: 80px;
+  --feature-height: 155px;
+  --ivory: #fdfbf7;
+  --ivory-soft: #f7f3ea;
+  --ivory-warm: #f1eadc;
+  --ink: #2d3128;
+  --ink-soft: #4a4d42;
+  --olive: #5c5843;
+  --olive-deep: #3d3b2b;
+  --olive-muted: #7a7658;
+  --gold: #b5935a;
+  --gold-deep: #9a7b45;
+  --gold-soft: #cbb07a;
+  --stone: #857d6c;
+  --line: rgba(45, 49, 40, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ivory: var(--ivory);
+  --color-ivory-soft: var(--ivory-soft);
+  --color-ivory-warm: var(--ivory-warm);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-olive: var(--olive);
+  --color-olive-deep: var(--olive-deep);
+  --color-olive-muted: var(--olive-muted);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-soft: var(--gold-soft);
+  --color-stone: var(--stone);
+  --color-line: var(--line);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+  --font-script: var(--font-script-face);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ivory-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 3px;
+}
+
+.gs-field:focus,
+.gs-field:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  border-bottom-color: var(--gold);
+  box-shadow: inset 0 -1.5px 0 0 var(--gold);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 80;
+  background: var(--olive-deep);
+  color: var(--ivory-soft);
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

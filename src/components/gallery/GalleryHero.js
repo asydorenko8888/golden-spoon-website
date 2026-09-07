@@ -23,7 +23,7 @@ export default function GalleryHero({ content }) {
         />
       </div>
 
-      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-[4.75rem] lg:pb-0">
+      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-12 lg:pb-0">
         <div className="max-w-[28rem]">
           <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}

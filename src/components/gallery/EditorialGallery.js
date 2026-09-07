@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 
@@ -35,34 +34,13 @@ const mobileObject = {
   "gallery-yacht-portrait": "max-md:object-[center_18%]",
 };
 
+function lightboxId(index) {
+  return `gallery-image-${index}`;
+}
+
 export default function EditorialGallery({ images }) {
-  const [active, setActive] = useState(null);
-
-  useEffect(() => {
-    if (active === null) return undefined;
-
-    function onKeyDown(event) {
-      if (event.key === "Escape") setActive(null);
-      if (event.key === "ArrowRight") {
-        setActive((current) => (current + 1) % images.length);
-      }
-      if (event.key === "ArrowLeft") {
-        setActive((current) => (current - 1 + images.length) % images.length);
-      }
-    }
-
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [active, images.length]);
-
-  const current = active !== null ? images[active] : null;
-
   return (
-    <section className="bg-ivory">
+    <section id="gallery" className="bg-ivory">
       <Container className="pt-7 pb-8 max-md:!px-4 lg:pt-7 lg:pb-9">
         <ul className="grid grid-cols-2 gap-1.5 max-md:auto-rows-auto lg:grid-cols-12">
           {images.map((image, index) => {
@@ -76,9 +54,8 @@ export default function EditorialGallery({ images }) {
                 key={image.id ?? image.slot}
                 className={`min-w-0 ${image.desktop} ${itemClass}`}
               >
-                <button
-                  type="button"
-                  onClick={() => setActive(index)}
+                <a
+                  href={`#${lightboxId(index)}`}
                   className={`relative block w-full overflow-hidden bg-[#d7cfb8] ${image.mobile} ${frameClass} lg:h-full`}
                   aria-label={`View ${image.alt}`}
                 >
@@ -93,64 +70,41 @@ export default function EditorialGallery({ images }) {
                     }
                     className={`object-cover transition-transform duration-700 ease-out hover:scale-[1.02] ${image.object} ${objectClass}`}
                   />
-                </button>
+                </a>
               </li>
             );
           })}
         </ul>
       </Container>
 
-      {current ? (
+      {images.map((image, index) => (
         <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/80 px-5"
+          key={`lightbox-${image.id ?? image.slot ?? index}`}
+          id={lightboxId(index)}
           role="dialog"
           aria-modal="true"
-          aria-label="Gallery image"
-          onClick={() => setActive(null)}
+          aria-label={image.alt}
+          className="fixed inset-0 z-[100] hidden items-center justify-center bg-ink/80 px-5 py-16 target:flex"
         >
-          <button
-            type="button"
-            className="absolute top-5 right-5 text-[0.68rem] font-medium tracking-[0.22em] text-ivory uppercase lg:text-[0.816rem]"
-            onClick={() => setActive(null)}
+          <a
+            href="#gallery"
+            className="absolute inset-0"
+            aria-label="Close"
+          />
+          <a
+            href="#gallery"
+            className="absolute top-4 right-5 z-[1] flex h-10 w-10 items-center justify-center text-[2rem] leading-none text-ivory"
+            aria-label="Close"
           >
-            Close
-          </button>
-          <button
-            type="button"
-            className="absolute left-4 text-ivory lg:left-8"
-            aria-label="Previous image"
-            onClick={(event) => {
-              event.stopPropagation();
-              setActive((currentIndex) => (currentIndex - 1 + images.length) % images.length);
-            }}
-          >
-            ←
-          </button>
-          <div
-            className="relative h-[78vh] w-full max-w-5xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <Image
-              src={current.src}
-              alt={current.alt}
-              fill
-              sizes="90vw"
-              className="object-contain"
-            />
-          </div>
-          <button
-            type="button"
-            className="absolute right-4 text-ivory lg:right-8"
-            aria-label="Next image"
-            onClick={(event) => {
-              event.stopPropagation();
-              setActive((currentIndex) => (currentIndex + 1) % images.length);
-            }}
-          >
-            →
-          </button>
+            ×
+          </a>
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="relative z-[1] max-h-[min(82vh,820px)] max-w-[min(92vw,1080px)] object-contain"
+          />
         </div>
-      ) : null}
+      ))}
     </section>
   );
 }

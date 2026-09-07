@@ -122,6 +122,106 @@ export function BotanicalBranch({ className = "", mirrored = false }) {
   );
 }
 
+export function OliveBranch({ className = "" }) {
+  return (
+    <svg
+      viewBox="0 0 220 130"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M14 108c32-10 62-32 92-46 28-14 58-22 86-30 12-3.5 20-8 26-16"
+        stroke="currentColor"
+        strokeWidth="1.15"
+        strokeLinecap="round"
+      />
+      <path
+        d="M40 102c-10-1-22 8-18 20 8-4 16-10 18-20Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M58 90c2-12 12-22 24-20-6 8-14 16-24 20Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M78 84c-12-2-24 8-20 22 10-6 18-14 20-22Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M98 70c2-14 14-24 26-20-8 8-16 16-26 20Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M118 62c-12 0-24 10-20 24 10-6 18-16 20-24Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M138 50c2-14 14-24 26-20-8 8-16 16-26 20Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M158 46c-12 0-22 10-18 22 9-6 16-14 18-22Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M176 34c2-12 12-20 24-16-8 6-16 12-24 16Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M192 30c-10 2-18 10-16 20 8-4 14-12 16-20Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinejoin="round"
+      />
+      <ellipse
+        cx="52"
+        cy="112"
+        rx="3.6"
+        ry="4.8"
+        transform="rotate(-32 52 112)"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+      <ellipse
+        cx="104"
+        cy="80"
+        rx="3.4"
+        ry="4.6"
+        transform="rotate(-22 104 80)"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+      <ellipse
+        cx="150"
+        cy="58"
+        rx="3.2"
+        ry="4.4"
+        transform="rotate(-16 150 58)"
+        stroke="currentColor"
+        strokeWidth="1"
+      />
+    </svg>
+  );
+}
+
 export function IconLeaf({ className = "" }) {
   return (
     <svg

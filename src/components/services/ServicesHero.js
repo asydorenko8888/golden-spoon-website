@@ -20,7 +20,7 @@ export default function ServicesHero({ content }) {
         />
       </div>
 
-      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:box-border lg:h-full lg:min-h-0 lg:items-start lg:pt-[4.75rem] lg:pb-8">
+      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:box-border lg:h-full lg:min-h-0 lg:items-start lg:pt-12 lg:pb-8">
         <div className="max-w-[28rem]">
           <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}
@@ -43,7 +43,7 @@ export default function ServicesHero({ content }) {
           <div className="mt-5 pb-4 md:pb-8 lg:pb-0">
             <Button
               href={content.cta.href}
-              variant="gold"
+              variant="goldOutline"
               className="lg:h-10 lg:min-h-10"
             >
               {content.cta.label}

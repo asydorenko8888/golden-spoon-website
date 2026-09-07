@@ -21,6 +21,7 @@ export default async function GalleryPage() {
       <GalleryHero content={galleryPage.hero} />
       <ValuesStrip items={galleryPage.strip} />
       <EditorialGallery images={images} />
+      <script src="/gallery-lightbox.js" defer />
       <GalleryCta content={galleryPage.cta} />
     </>
   );

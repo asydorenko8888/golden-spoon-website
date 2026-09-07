@@ -4,7 +4,11 @@ import InquiryForm from "@/components/contact/InquiryForm";
 
 export default function InquirySection({ content }) {
   return (
-    <section className="bg-ivory">
+    <section
+      id="inquiry-form"
+      className="relative scroll-mt-[var(--header-height)] bg-ivory"
+    >
+      <span id="inquiry" className="absolute top-0" aria-hidden="true" />
       <Container className="pt-7 pb-8 lg:pt-8 lg:pb-10">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch lg:gap-x-[8%]">
           <div className="flex max-w-[34rem] flex-col lg:max-w-none">

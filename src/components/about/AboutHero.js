@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import { site } from "@/data/siteContent";
 
 export default function AboutHero({ content }) {
   return (
@@ -22,8 +24,8 @@ export default function AboutHero({ content }) {
         />
       </div>
 
-      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-[4.75rem] lg:pb-0">
-        <div className="max-w-[28rem]">
+      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-12 lg:pb-0">
+        <div className="max-w-[28rem] lg:flex lg:h-full lg:flex-col">
           <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}
           </p>
@@ -39,6 +41,15 @@ export default function AboutHero({ content }) {
             <span className="block">{content.copy[0]}</span>
             <span className="block">{content.copy[1]}</span>
           </p>
+          <div className="mt-5 pb-4 md:pb-8 lg:mt-0 lg:flex lg:flex-1 lg:items-center lg:pb-0">
+            <Button
+              href="/contact#inquiry-form"
+              variant="goldOutline"
+              className="lg:h-10 lg:min-h-10"
+            >
+              {site.cta.inquire.label}
+            </Button>
+          </div>
         </div>
       </Container>
     </section>

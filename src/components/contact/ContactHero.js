@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
-import { OliveSprig } from "@/components/ui/Ornaments";
+import { OliveBranch, OliveSprig } from "@/components/ui/Ornaments";
 
 export default function ContactHero({ content }) {
   return (
-    <section className="relative overflow-hidden bg-ivory lg:h-[calc((100vh-var(--header-height))*0.72)] lg:max-h-[calc((100vh-var(--header-height))*0.72)]">
+    <section className="relative bg-ivory lg:h-[calc((100vh-var(--header-height))*0.72)] lg:max-h-[calc((100vh-var(--header-height))*0.72)]">
       <div
         data-image-slot={content.image.slot}
         className="absolute inset-0 overflow-hidden bg-[#d7cfb8]"
@@ -23,8 +23,8 @@ export default function ContactHero({ content }) {
         />
       </div>
 
-      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-[4.75rem] lg:pb-0">
-        <div className="max-w-[28rem]">
+      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-12 lg:pb-0">
+        <div className="max-w-[28rem] lg:flex lg:h-full lg:flex-col">
           <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}
           </p>
@@ -40,6 +40,13 @@ export default function ContactHero({ content }) {
           <p className="mt-4 text-[0.95rem] leading-6 text-ink lg:text-[18px] lg:leading-[1.55]">
             {content.copy}
           </p>
+          <div
+            className="relative z-[2] hidden justify-center lg:flex lg:flex-1 lg:items-center"
+            data-olive-branch="contact-hero"
+            aria-hidden="true"
+          >
+            <OliveBranch className="h-[136px] w-[230px] text-[#8A8060] opacity-50" />
+          </div>
         </div>
       </Container>
     </section>

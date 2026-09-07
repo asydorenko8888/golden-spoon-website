@@ -101,7 +101,7 @@ export default function Hero({ content }) {
   return (
     <section
       data-measure="hero"
-      className="relative overflow-hidden bg-ivory lg:h-[calc(100svh-var(--header-height)-var(--feature-height))] lg:min-h-0"
+      className="relative overflow-hidden bg-ivory lg:h-[calc((100vh-var(--header-height))*0.72)] lg:max-h-[calc((100vh-var(--header-height))*0.72)] lg:min-h-0"
     >
       <Image
         src="/images/brand/botanical-left.png"
@@ -112,7 +112,7 @@ export default function Hero({ content }) {
       />
 
       <div className="relative lg:grid lg:h-full lg:min-h-0 lg:grid-cols-[45%_55%] lg:items-stretch">
-        <div className="relative z-[2] flex flex-col items-start px-5 py-8 sm:px-8 md:py-16 lg:h-full lg:items-center lg:justify-center lg:px-8 lg:py-0">
+        <div className="relative z-[2] flex flex-col items-start px-5 py-8 sm:px-8 md:py-16 lg:box-border lg:h-full lg:items-center lg:justify-center lg:px-8 lg:pt-12 lg:pb-16">
           <div className="w-full max-w-[34rem] lg:text-center">
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-ink lg:text-[14.4px]">
               {content.eyebrow}
@@ -145,7 +145,7 @@ export default function Hero({ content }) {
 
             <HeroCopy text={content.copy} />
 
-            <div className="mt-4 md:mt-6 lg:mt-0 lg:flex lg:justify-center">
+            <div className="mt-4 md:mt-6 lg:mt-6 lg:flex lg:justify-center">
               <Button
                 href={content.cta.href}
                 variant="goldOutline"

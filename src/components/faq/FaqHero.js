@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import { OliveSprig } from "@/components/ui/Ornaments";
+import { site } from "@/data/siteContent";
 
 export default function FaqHero({ content }) {
   return (
@@ -23,7 +25,7 @@ export default function FaqHero({ content }) {
         />
       </div>
 
-      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-[4.75rem] lg:pb-0">
+      <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-12 lg:pb-0">
         <div className="max-w-[28rem]">
           <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}
@@ -40,6 +42,15 @@ export default function FaqHero({ content }) {
           <p className="mt-4 text-[0.95rem] leading-6 text-ink lg:text-[18px] lg:leading-[1.55]">
             {content.copy}
           </p>
+          <div className="mt-5 pb-4 md:pb-8 lg:pb-0">
+            <Button
+              href={`${site.cta.inquire.href}#inquiry`}
+              variant="goldOutline"
+              className="lg:h-10 lg:min-h-10"
+            >
+              {site.cta.inquire.label}
+            </Button>
+          </div>
         </div>
       </Container>
     </section>

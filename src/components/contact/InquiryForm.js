@@ -303,7 +303,7 @@ export default function InquiryForm({
           type="submit"
           disabled={submitting}
           aria-busy={submitting}
-          className="inline-flex min-h-12 w-full items-center justify-center border border-gold bg-gold px-8 text-center text-[0.68rem] font-medium tracking-[0.22em] text-ivory uppercase lg:text-[0.816rem] transition-colors duration-300 hover:border-gold-deep hover:bg-gold-deep disabled:opacity-60 sm:w-auto lg:h-10 lg:min-h-10"
+          className="inline-flex min-h-12 w-full items-center justify-center border border-gold bg-transparent px-8 text-center text-[0.68rem] font-medium tracking-[0.22em] text-gold uppercase lg:text-[0.816rem] transition-colors duration-300 hover:border-gold hover:bg-gold hover:text-ivory disabled:opacity-60 sm:w-auto lg:h-10 lg:min-h-10"
         >
           {submitting ? "Sending…" : submitLabel}
         </button>

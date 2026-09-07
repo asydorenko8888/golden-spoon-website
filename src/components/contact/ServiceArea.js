@@ -23,10 +23,10 @@ export default function ServiceArea({ content }) {
           </figure>
 
           <div className="relative mt-6 max-w-[34rem] lg:mt-0 lg:max-w-none">
-            <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+            <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
               {content.eyebrow}
             </p>
-            <h2 className="mt-2 font-serif text-[1.85rem] leading-[1.08] font-medium tracking-tight text-ink uppercase sm:text-[2.15rem] lg:text-[2.35rem]">
+            <h2 className="mt-2 font-serif text-[2.22rem] leading-[1.08] font-medium tracking-tight text-ink uppercase sm:text-[2.58rem] lg:text-[2.82rem]">
               <span className="block">{content.heading[0]}</span>
               <span className="block">{content.heading[1]}</span>
             </h2>
@@ -35,10 +35,10 @@ export default function ServiceArea({ content }) {
               <OliveSprig className="h-4 w-7 text-[#7C8060]" />
               <span className="h-px w-10 bg-gold/70" />
             </div>
-            <p className="mt-4 text-[0.95rem] leading-7 text-ink lg:text-[15px] lg:leading-[1.7]">
+            <p className="mt-4 text-[1.14rem] leading-7 text-ink lg:text-[18px] lg:leading-[1.7]">
               {content.copy}
             </p>
-            <p className="mt-3 text-[0.92rem] leading-6 text-ink-soft lg:text-[14.5px] lg:leading-[1.6]">
+            <p className="mt-3 text-[1.104rem] leading-6 text-ink-soft lg:text-[17.4px] lg:leading-[1.6]">
               {content.support}
             </p>
           </div>

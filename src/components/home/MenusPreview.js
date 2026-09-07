@@ -16,13 +16,13 @@ export default function MenusPreview({ content }) {
 
       <Container className="relative z-[1] pt-4 pb-5 md:py-9 lg:pt-2 lg:pb-8">
         <div className="mx-auto max-w-[40rem] text-center">
-          <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+          <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
             {content.eyebrow}
           </p>
-          <h2 className="mt-1.5 font-serif text-[1.7rem] leading-[1.12] font-medium tracking-tight text-ink sm:text-[2rem] lg:text-[2.15rem]">
+          <h2 className="mt-1.5 font-serif text-[2.04rem] leading-[1.12] font-medium tracking-tight text-ink sm:text-[2.4rem] lg:text-[2.58rem]">
             {content.heading}
           </h2>
-          <p className="mx-auto mt-3 max-w-[34rem] text-[0.85rem] leading-6 text-ink lg:mt-2.5 lg:text-[14px] lg:leading-[1.55]">
+          <p className="mx-auto mt-3 max-w-[34rem] text-[1.02rem] leading-6 text-ink lg:mt-2.5 lg:text-[16.8px] lg:leading-[1.55]">
             {content.copy}
           </p>
         </div>
@@ -42,10 +42,10 @@ export default function MenusPreview({ content }) {
                   className="object-cover object-center"
                 />
               </div>
-              <h3 className="mt-3 text-center font-serif text-[1rem] leading-snug font-medium text-ink lg:mt-3.5 lg:text-[1.05rem]">
+              <h3 className="mt-3 text-center font-serif text-[1.2rem] leading-snug font-medium text-ink lg:mt-3.5 lg:text-[1.26rem]">
                 {item.title}
               </h3>
-              <p className="mt-1 text-center text-[0.75rem] leading-[1.4] text-ink-soft lg:text-[12.5px] lg:leading-[1.45]">
+              <p className="mt-1 text-center text-[0.9rem] leading-[1.4] text-ink-soft lg:text-[15px] lg:leading-[1.45]">
                 {item.copy}
               </p>
             </li>

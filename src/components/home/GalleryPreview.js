@@ -54,10 +54,10 @@ export default function GalleryPreview({ content }) {
 
           <div className="relative max-w-[26rem] max-md:contents md:order-2 md:mt-8 lg:mt-0">
             <div className="order-1">
-              <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+              <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
                 {content.eyebrow}
               </p>
-              <h2 className="mt-2 font-serif text-[1.85rem] leading-[1.08] font-medium tracking-tight text-ink sm:text-[2.15rem] lg:text-[2.45rem]">
+              <h2 className="mt-2 font-serif text-[2.22rem] leading-[1.08] font-medium tracking-tight text-ink sm:text-[2.58rem] lg:text-[2.94rem]">
                 {content.heading}
               </h2>
               <div
@@ -70,7 +70,7 @@ export default function GalleryPreview({ content }) {
               </div>
             </div>
             <div className="order-3 mt-5 md:mt-0">
-              <p className="mt-0 text-[0.95rem] leading-7 text-ink md:mt-5 lg:text-[15px] lg:leading-[1.7]">
+              <p className="mt-0 text-[1.14rem] leading-7 text-ink md:mt-5 lg:text-[18px] lg:leading-[1.7]">
                 {content.copy}
               </p>
               <div className="mt-5 md:mt-7">

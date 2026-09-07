@@ -64,7 +64,7 @@ export default function Header({ content = site }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative whitespace-nowrap text-[0.68rem] font-medium uppercase tracking-[0.2em] transition-colors duration-300 ${
+                className={`relative whitespace-nowrap text-[0.816rem] font-medium uppercase tracking-[0.2em] transition-colors duration-300 ${
                   isCurrent ? "text-gold" : "text-ink hover:text-gold"
                 }`}
                 aria-current={isCurrent ? "page" : undefined}
@@ -84,7 +84,7 @@ export default function Header({ content = site }) {
         <Button
           href={content.cta.inquireShort.href}
           variant="goldOutline"
-          className="ml-auto inline-flex shrink-0 max-md:min-h-9 max-md:min-w-0 max-md:px-3 max-md:text-[0.62rem] max-md:tracking-[0.16em] md:hidden lg:inline-flex lg:min-h-9 lg:min-w-[6.75rem] lg:px-5"
+          className="ml-auto inline-flex shrink-0 max-md:min-h-9 max-md:min-w-0 max-md:px-3 max-md:text-[0.744rem] max-md:tracking-[0.16em] md:hidden lg:inline-flex lg:min-h-9 lg:min-w-[6.75rem] lg:px-5"
         >
           {content.cta.inquireShort.label}
         </Button>
@@ -126,7 +126,7 @@ export default function Header({ content = site }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`border-b border-line py-4 font-serif text-2xl ${
+                  className={`border-b border-line py-4 font-serif text-[1.8rem] ${
                     isCurrent ? "text-gold" : "text-ink"
                   }`}
                   aria-current={isCurrent ? "page" : undefined}

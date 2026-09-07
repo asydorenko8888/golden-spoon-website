@@ -74,7 +74,7 @@ body {
   background: var(--olive-deep);
   color: var(--ivory-soft);
   padding: 0.6rem 1rem;
-  font-size: 0.8rem;
+  font-size: 0.96rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

@@ -6,13 +6,13 @@ export default function FaqSection({ intro, items }) {
     <section className="bg-ivory">
       <Container className="pt-7 pb-8 lg:pt-8 lg:pb-10">
         <div className="max-w-[40rem]">
-          <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+          <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
             {intro.eyebrow}
           </p>
-          <h2 className="mt-2 font-serif text-[1.7rem] leading-[1.12] font-medium tracking-tight text-ink uppercase sm:text-[1.95rem] lg:text-[2.15rem]">
+          <h2 className="mt-2 font-serif text-[2.04rem] leading-[1.12] font-medium tracking-tight text-ink uppercase sm:text-[2.34rem] lg:text-[2.58rem]">
             {intro.heading}
           </h2>
-          <p className="mt-3 text-[0.9rem] leading-6 text-ink lg:text-[14.5px] lg:leading-[1.55]">
+          <p className="mt-3 text-[1.08rem] leading-6 text-ink lg:text-[17.4px] lg:leading-[1.55]">
             {intro.copy}
           </p>
         </div>

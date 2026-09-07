@@ -18,10 +18,10 @@ export default function OurApproach({ content }) {
       <Container className="relative z-[1] py-8 md:py-14 lg:py-10">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-x-[8%]">
           <div className="relative max-w-[34rem] lg:max-w-none">
-            <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+            <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
               {content.eyebrow}
             </p>
-            <h2 className="mt-2 font-serif text-[2.15rem] leading-[1.05] font-medium tracking-tight text-ink uppercase sm:text-[2.45rem] lg:mt-1.5 lg:text-[2.75rem]">
+            <h2 className="mt-2 font-serif text-[2.58rem] leading-[1.05] font-medium tracking-tight text-ink uppercase sm:text-[2.94rem] lg:mt-1.5 lg:text-[3.3rem]">
               <span className="block">{content.heading[0]}</span>
               <span className="block">{content.heading[1]}</span>
             </h2>
@@ -30,7 +30,7 @@ export default function OurApproach({ content }) {
               <OliveSprig className="h-4 w-7 text-[#7C8060]" />
               <span className="h-px w-10 bg-gold/70" />
             </div>
-            <div className="mt-4 space-y-3 text-[0.95rem] leading-7 text-ink md:mt-5 md:space-y-4 lg:mt-4 lg:space-y-3 lg:text-[15px] lg:leading-[1.7]">
+            <div className="mt-4 space-y-3 text-[1.14rem] leading-7 text-ink md:mt-5 md:space-y-4 lg:mt-4 lg:space-y-3 lg:text-[18px] lg:leading-[1.7]">
               {content.copy.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

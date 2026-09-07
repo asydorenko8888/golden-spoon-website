@@ -44,16 +44,16 @@ export default function BrandMark({
       />
       <span className="flex min-w-0 flex-col">
         <span
-          className={`font-serif text-[1.15rem] leading-none tracking-[0.16em] uppercase sm:text-[1.35rem] ${titleColor} ${
-            gold ? "lg:text-[1.55rem] lg:tracking-[0.14em] whitespace-nowrap" : ""
+          className={`font-serif text-[1.38rem] leading-none tracking-[0.16em] uppercase sm:text-[1.62rem] ${titleColor} ${
+            gold ? "lg:text-[1.86rem] lg:tracking-[0.14em] whitespace-nowrap" : ""
           }`}
         >
           {site.shortName}
         </span>
         <span
-          className={`mt-1.5 text-[0.52rem] font-medium uppercase tracking-[0.18em] sm:tracking-[0.2em] ${subtitleColor} ${
+          className={`mt-1.5 text-[0.624rem] font-medium uppercase tracking-[0.18em] sm:tracking-[0.2em] ${subtitleColor} ${
             compact ? "hidden min-[420px]:block" : ""
-          } ${gold ? "lg:mt-2 lg:text-[0.58rem] lg:tracking-[0.22em]" : ""}`}
+          } ${gold ? "lg:mt-2 lg:text-[0.696rem] lg:tracking-[0.22em]" : ""}`}
         >
           {site.descriptor}
         </span>

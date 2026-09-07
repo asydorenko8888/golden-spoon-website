@@ -20,13 +20,13 @@ export default function SelectedServices({ content }) {
 
       <Container className="relative z-[1] pt-5 pb-4 md:py-9 lg:pt-1 lg:pb-8">
         <div className="mx-auto max-w-[40rem] text-center">
-          <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+          <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
             {content.eyebrow}
           </p>
-          <h2 className="mt-1.5 font-serif text-[1.45rem] leading-[1.12] font-medium tracking-tight text-ink md:text-[2rem] lg:text-[2.15rem]">
+          <h2 className="mt-1.5 font-serif text-[1.74rem] leading-[1.12] font-medium tracking-tight text-ink md:text-[2.4rem] lg:text-[2.58rem]">
             {content.heading}
           </h2>
-          <p className="mt-1.5 font-script text-[1.35rem] leading-[1.15] text-gold sm:text-[1.5rem] lg:text-[clamp(20px,1.5vw,26px)]">
+          <p className="mt-1.5 font-script text-[1.62rem] leading-[1.15] text-gold sm:text-[1.8rem] lg:text-[clamp(24px,1.8vw,31.2px)]">
             {content.script}
           </p>
           <div
@@ -37,7 +37,7 @@ export default function SelectedServices({ content }) {
             <OliveSprig className="h-3.5 w-6 text-[#7C8060]" />
             <span className="h-px w-8 bg-gold/70" />
           </div>
-          <p className="mx-auto mt-2.5 max-w-[32rem] text-[0.85rem] leading-6 text-ink lg:-mt-1 lg:text-[14px] lg:leading-[1.55]">
+          <p className="mx-auto mt-2.5 max-w-[32rem] text-[1.02rem] leading-6 text-ink lg:-mt-1 lg:text-[16.8px] lg:leading-[1.55]">
             {content.copy}
           </p>
         </div>
@@ -57,10 +57,10 @@ export default function SelectedServices({ content }) {
                   className="object-cover object-center"
                 />
               </div>
-              <h3 className="mt-3 text-center font-serif text-[1rem] leading-snug font-medium text-ink lg:mt-3.5 lg:text-[1.05rem]">
+              <h3 className="mt-3 text-center font-serif text-[1.2rem] leading-snug font-medium text-ink lg:mt-3.5 lg:text-[1.26rem]">
                 {item.title}
               </h3>
-              <p className="mt-1 text-center text-[0.75rem] leading-[1.4] text-ink-soft lg:text-[12.5px] lg:leading-[1.45]">
+              <p className="mt-1 text-center text-[0.9rem] leading-[1.4] text-ink-soft lg:text-[15px] lg:leading-[1.45]">
                 {item.copy}
               </p>
             </li>

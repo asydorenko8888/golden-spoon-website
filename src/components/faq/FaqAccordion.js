@@ -25,14 +25,14 @@ export default function FaqAccordion({ items }) {
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 className="flex w-full min-h-12 items-center gap-3 py-3.5 text-left sm:gap-4 sm:py-4"
               >
-                <span className="w-7 shrink-0 font-serif text-[0.95rem] leading-none text-gold sm:w-8 sm:text-[1.05rem]">
+                <span className="w-7 shrink-0 font-serif text-[1.14rem] leading-none text-gold sm:w-8 sm:text-[1.26rem]">
                   {number}
                 </span>
-                <span className="min-w-0 flex-1 font-serif text-[1.02rem] leading-[1.25] font-medium tracking-tight text-ink sm:text-[1.12rem] lg:text-[1.2rem]">
+                <span className="min-w-0 flex-1 font-serif text-[1.224rem] leading-[1.25] font-medium tracking-tight text-ink sm:text-[1.344rem] lg:text-[1.44rem]">
                   {item.question}
                 </span>
                 <span
-                  className="ml-2 w-5 shrink-0 text-center font-serif text-[1.35rem] leading-none font-light text-gold"
+                  className="ml-2 w-5 shrink-0 text-center font-serif text-[1.62rem] leading-none font-light text-gold"
                   aria-hidden="true"
                 >
                   {isOpen ? "−" : "+"}
@@ -48,7 +48,7 @@ export default function FaqAccordion({ items }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="max-w-[46rem] pr-8 pb-4 pl-10 text-[0.92rem] leading-6 text-ink-soft sm:pl-12 lg:text-[15px] lg:leading-[1.6]">
+                <p className="max-w-[46rem] pr-8 pb-4 pl-10 text-[1.104rem] leading-6 text-ink-soft sm:pl-12 lg:text-[18px] lg:leading-[1.6]">
                   {item.answer}
                 </p>
               </div>

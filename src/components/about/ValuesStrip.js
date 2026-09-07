@@ -16,10 +16,10 @@ export default function ValuesStrip({ items }) {
               }`}
             >
               <FeatureIcon name={item.icon} className="h-8 w-8 text-gold lg:h-9 lg:w-9" />
-              <h3 className="flex h-full w-full items-start justify-center text-[0.68rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-ink md:mt-3 md:h-auto lg:mt-2">
+              <h3 className="flex h-full w-full items-start justify-center text-[0.816rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-ink md:mt-3 md:h-auto lg:mt-2">
                 {item.title}
               </h3>
-              <p className="max-w-[13rem] text-[0.8rem] leading-6 text-ink-soft md:mt-2 lg:mt-1.5 lg:text-[13px] lg:leading-[1.45]">
+              <p className="max-w-[13rem] text-[0.96rem] leading-6 text-ink-soft md:mt-2 lg:mt-1.5 lg:text-[15.6px] lg:leading-[1.45]">
                 {item.href ? (
                   <a
                     href={item.href}

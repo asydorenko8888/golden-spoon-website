@@ -16,15 +16,15 @@ const initialValues = {
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldClass =
-  "gs-field block w-full appearance-none rounded-none border-0 border-b border-gold/40 bg-transparent px-0 py-2.5 text-[0.95rem] text-ink outline-none transition-colors placeholder:text-ink/40";
+  "gs-field block w-full appearance-none rounded-none border-0 border-b border-gold/40 bg-transparent px-0 py-2.5 text-[1.14rem] text-ink outline-none transition-colors placeholder:text-ink/40";
 
 const labelClass =
-  "block text-[0.68rem] font-medium tracking-[0.18em] text-ink uppercase";
+  "block text-[0.816rem] font-medium tracking-[0.18em] text-ink uppercase";
 
 function FieldError({ id, message }) {
   if (!message) return null;
   return (
-    <p id={id} className="mt-1.5 text-[0.72rem] leading-4 text-gold-deep">
+    <p id={id} className="mt-1.5 text-[0.864rem] leading-4 text-gold-deep">
       {message}
     </p>
   );
@@ -147,10 +147,10 @@ export default function InquiryForm({
         role="status"
         aria-live="polite"
       >
-        <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+        <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
           {success.eyebrow}
         </p>
-        <p className="mt-3 font-serif text-[1.7rem] leading-[1.12] font-medium tracking-tight text-ink uppercase sm:text-[1.95rem]">
+        <p className="mt-3 font-serif text-[2.04rem] leading-[1.12] font-medium tracking-tight text-ink uppercase sm:text-[2.34rem]">
           {success.copy}
         </p>
       </div>
@@ -295,7 +295,7 @@ export default function InquiryForm({
 
       <div className="mt-6">
         {deliveryError ? (
-          <p className="mb-3 text-[0.72rem] leading-4 text-gold-deep" role="alert">
+          <p className="mb-3 text-[0.864rem] leading-4 text-gold-deep" role="alert">
             {deliveryError}
           </p>
         ) : null}
@@ -303,7 +303,7 @@ export default function InquiryForm({
           type="submit"
           disabled={submitting}
           aria-busy={submitting}
-          className="inline-flex min-h-12 w-full items-center justify-center border border-gold bg-gold px-8 text-center text-[0.68rem] font-medium tracking-[0.22em] text-ivory uppercase transition-colors duration-300 hover:border-gold-deep hover:bg-gold-deep disabled:opacity-60 sm:w-auto lg:h-10 lg:min-h-10"
+          className="inline-flex min-h-12 w-full items-center justify-center border border-gold bg-gold px-8 text-center text-[0.816rem] font-medium tracking-[0.22em] text-ivory uppercase transition-colors duration-300 hover:border-gold-deep hover:bg-gold-deep disabled:opacity-60 sm:w-auto lg:h-10 lg:min-h-10"
         >
           {submitting ? "Sending…" : submitLabel}
         </button>

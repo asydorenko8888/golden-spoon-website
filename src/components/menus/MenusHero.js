@@ -29,10 +29,10 @@ export default function MenusHero({ content }) {
 
       <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:h-full lg:min-h-0 lg:items-start lg:pt-[4.75rem] lg:pb-0">
         <div className="max-w-[28rem]">
-          <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+          <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
             {content.eyebrow}
           </p>
-          <h1 className="mt-3 font-serif text-[2.45rem] leading-[0.98] font-medium tracking-[-0.01em] text-ink uppercase sm:text-5xl lg:text-[clamp(44px,3.6vw,56px)] lg:leading-[0.95]">
+          <h1 className="mt-3 font-serif text-[2.94rem] leading-[0.98] font-medium tracking-[-0.01em] text-ink uppercase sm:text-[3.6rem] lg:text-[clamp(52.8px,4.32vw,67.2px)] lg:leading-[0.95]">
             <span className="block">{content.heading[0]}</span>
             <span className="block">{content.heading[1]}</span>
           </h1>
@@ -41,7 +41,7 @@ export default function MenusHero({ content }) {
             <OliveSprig className="h-4 w-7 text-[#7C8060]" />
             <span className="h-px w-10 bg-gold/70" />
           </div>
-          <p className="mt-4 text-[0.95rem] leading-6 text-ink lg:text-[15px] lg:leading-[1.55]">
+          <p className="mt-4 text-[1.14rem] leading-6 text-ink lg:text-[18px] lg:leading-[1.55]">
             {content.copy}
           </p>
         </div>

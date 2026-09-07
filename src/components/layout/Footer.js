@@ -32,14 +32,14 @@ export default function Footer({ content = site }) {
 
         <div className="mt-3.5 grid grid-cols-3 items-start gap-x-3">
           <div className="min-w-0">
-            <h2 className="text-[0.58rem] font-medium uppercase tracking-[0.16em] text-gold">
+            <h2 className="text-[0.696rem] font-medium uppercase tracking-[0.16em] text-gold">
               {headings.explore}
             </h2>
             <ul className="mt-2 space-y-1">
               {mobileQuickLinks.map((item) => (
                 <li
                   key={item.label}
-                  className="text-[0.72rem] leading-[1.5] text-ink"
+                  className="text-[0.864rem] leading-[1.5] text-ink"
                 >
                   <Link
                     href={item.href}
@@ -53,14 +53,14 @@ export default function Footer({ content = site }) {
           </div>
 
           <div className="min-w-0">
-            <h2 className="text-[0.58rem] font-medium uppercase tracking-[0.16em] text-gold">
+            <h2 className="text-[0.696rem] font-medium uppercase tracking-[0.16em] text-gold">
               {headings.services}
             </h2>
             <ul className="mt-2 space-y-1">
               {mobileServices.map((item) => (
                 <li
                   key={item}
-                  className="text-[0.72rem] leading-[1.5] text-ink"
+                  className="text-[0.864rem] leading-[1.5] text-ink"
                 >
                   {item}
                 </li>
@@ -69,10 +69,10 @@ export default function Footer({ content = site }) {
           </div>
 
           <div className="min-w-0">
-            <h2 className="text-[0.58rem] font-medium uppercase tracking-[0.16em] text-gold">
+            <h2 className="text-[0.696rem] font-medium uppercase tracking-[0.16em] text-gold">
               {headings.contact}
             </h2>
-            <ul className="mt-2 space-y-1 text-[0.72rem] leading-[1.5] text-ink">
+            <ul className="mt-2 space-y-1 text-[0.864rem] leading-[1.5] text-ink">
               {phone ? (
                 <li>
                   <a
@@ -105,7 +105,7 @@ export default function Footer({ content = site }) {
         </div>
 
         <div className="mt-3.5 border-t border-ink/15 pt-2.5">
-          <p className="text-[0.68rem] tracking-wide text-ink/70">
+          <p className="text-[0.816rem] tracking-wide text-ink/70">
             © {year} {copyrightName}
           </p>
         </div>
@@ -117,18 +117,18 @@ export default function Footer({ content = site }) {
             <div className="origin-left scale-[0.88] -mb-1">
               <BrandMark lockup name={content.name} />
             </div>
-            <p className="mt-3.5 max-w-[17rem] text-sm leading-6 text-ink">
+            <p className="mt-3.5 max-w-[17rem] text-[1.05rem] leading-6 text-ink">
               {content.tagline}
             </p>
           </div>
 
           <div>
-            <h2 className="text-[0.68rem] font-medium uppercase tracking-[0.22em] text-gold">
+            <h2 className="text-[0.816rem] font-medium uppercase tracking-[0.22em] text-gold">
               {headings.quickLinks}
             </h2>
             <ul className="mt-3 space-y-1.5">
               {content.footer.quickLinks.map((item) => (
-                <li key={item.label} className="text-sm text-ink">
+                <li key={item.label} className="text-[1.05rem] text-ink">
                   <Link
                     href={item.href}
                     className="transition-colors hover:text-gold"
@@ -141,12 +141,12 @@ export default function Footer({ content = site }) {
           </div>
 
           <div>
-            <h2 className="text-[0.68rem] font-medium uppercase tracking-[0.22em] text-gold">
+            <h2 className="text-[0.816rem] font-medium uppercase tracking-[0.22em] text-gold">
               {headings.services}
             </h2>
             <ul className="mt-3 space-y-1.5">
               {content.footer.services.map((item) => (
-                <li key={item} className="text-sm text-ink">
+                <li key={item} className="text-[1.05rem] text-ink">
                   {item}
                 </li>
               ))}
@@ -154,12 +154,12 @@ export default function Footer({ content = site }) {
           </div>
 
           <div>
-            <h2 className="text-[0.68rem] font-medium uppercase tracking-[0.22em] text-gold">
+            <h2 className="text-[0.816rem] font-medium uppercase tracking-[0.22em] text-gold">
               {headings.serviceArea}
             </h2>
             <ul className="mt-3 space-y-1.5">
               {content.footer.serviceArea.map((item) => (
-                <li key={item} className="text-sm text-ink">
+                <li key={item} className="text-[1.05rem] text-ink">
                   {item}
                 </li>
               ))}
@@ -167,10 +167,10 @@ export default function Footer({ content = site }) {
           </div>
 
           <div>
-            <h2 className="text-[0.68rem] font-medium uppercase tracking-[0.22em] text-gold">
+            <h2 className="text-[0.816rem] font-medium uppercase tracking-[0.22em] text-gold">
               {headings.contact}
             </h2>
-            <div className="mt-3 space-y-1.5 text-sm text-ink">
+            <div className="mt-3 space-y-1.5 text-[1.05rem] text-ink">
               {phone ? (
                 <p>
                   <a href={`tel:${phone.replace(/\D/g, "")}`} className="hover:text-gold">
@@ -193,14 +193,14 @@ export default function Footer({ content = site }) {
             <Button
               href={content.cta.inquireShort.href}
               variant="goldOutline"
-              className="mt-4 min-h-10 px-5 text-[0.62rem]"
+              className="mt-4 min-h-10 px-5 text-[0.744rem]"
             >
               {content.cta.inquireShort.label}
             </Button>
           </div>
         </div>
 
-        <div className="mt-7 flex flex-col gap-1.5 border-t border-ink/15 pt-3 text-xs tracking-wide text-ink/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-7 flex flex-col gap-1.5 border-t border-ink/15 pt-3 text-[0.9rem] tracking-wide text-ink/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {content.name}
           </p>

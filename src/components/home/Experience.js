@@ -31,13 +31,13 @@ export default function Experience({ content }) {
           </figure>
 
           <div className="relative z-[1] mt-5 max-w-[34rem] md:mt-8 lg:mt-0 lg:max-w-[32rem]">
-            <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase">
+            <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
               {content.eyebrow}
             </p>
-            <h2 className="mt-1.5 font-serif text-[2.75rem] leading-none font-medium tracking-tight text-ink sm:text-5xl lg:text-[3.75rem]">
+            <h2 className="mt-1.5 font-serif text-[3.3rem] leading-none font-medium tracking-tight text-ink sm:text-[3.6rem] lg:text-[4.5rem]">
               {content.heading}
             </h2>
-            <p className="mt-2.5 font-script text-[1.45rem] leading-[1.15] text-gold sm:text-[1.65rem] lg:mt-3 lg:text-[clamp(22px,1.8vw,28px)]">
+            <p className="mt-2.5 font-script text-[1.74rem] leading-[1.15] text-gold sm:text-[1.98rem] lg:mt-3 lg:text-[clamp(26.4px,2.16vw,33.6px)]">
               {content.script}
             </p>
 
@@ -50,7 +50,7 @@ export default function Experience({ content }) {
               <span className="h-px w-10 bg-gold/70" />
             </div>
 
-            <p className="mt-5 text-[0.95rem] leading-7 text-ink lg:mt-5 lg:text-[15px] lg:leading-[1.7]">
+            <p className="mt-5 text-[1.14rem] leading-7 text-ink lg:mt-5 lg:text-[18px] lg:leading-[1.7]">
               {content.copy}
             </p>
           </div>

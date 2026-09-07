@@ -11,9 +11,9 @@ function normalizeText(value) {
 
 function HeroScript({ text = "" }) {
   const scriptClass =
-    "mt-2 font-script text-[1.98rem] leading-[1.15] text-gold sm:text-[2.28rem] md:mt-2.5 lg:mt-2 lg:text-[clamp(30px,2.64vw,40.8px)] lg:leading-[1.05]";
+    "mt-2 font-script text-[1.65rem] leading-[1.15] text-gold sm:text-[1.9rem] md:mt-2.5 lg:mt-2 lg:text-[clamp(30px,2.64vw,40.8px)] lg:leading-[1.05]";
   const firstLineClass =
-    "block text-[2.277rem] sm:text-[2.622rem] lg:text-[clamp(34.5px,3.036vw,46.92px)]";
+    "block text-[1.8975rem] sm:text-[2.185rem] lg:text-[clamp(34.5px,3.036vw,46.92px)]";
 
   if (normalizeText(text) === normalizeText(DEFAULT_SCRIPT)) {
     return (
@@ -71,7 +71,7 @@ function HeroScript({ text = "" }) {
 
 function HeroCopy({ text = "" }) {
   const copyClass =
-    "mt-2.5 text-[1.14rem] leading-6 text-ink md:mt-3.5 lg:mt-2.5 lg:-translate-y-[10px] lg:text-[18px] lg:leading-[1.45]";
+    "mt-2.5 text-[0.95rem] leading-6 text-ink md:mt-3.5 lg:mt-2.5 lg:-translate-y-[10px] lg:text-[18px] lg:leading-[1.45]";
 
   if (normalizeText(text) === normalizeText(DEFAULT_COPY)) {
     return (
@@ -114,7 +114,7 @@ export default function Hero({ content }) {
       <div className="relative lg:grid lg:h-full lg:min-h-0 lg:grid-cols-[45%_55%] lg:items-stretch">
         <div className="relative z-[2] flex flex-col items-start px-5 py-8 sm:px-8 md:py-16 lg:h-full lg:items-center lg:justify-center lg:px-8 lg:py-0">
           <div className="w-full max-w-[34rem] lg:text-center">
-            <p className="text-[0.84rem] font-medium uppercase tracking-[0.3em] text-ink lg:text-[14.4px]">
+            <p className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-ink lg:text-[14.4px]">
               {content.eyebrow}
             </p>
 
@@ -131,7 +131,7 @@ export default function Hero({ content }) {
               />
             </div>
 
-            <h1 className="mt-2.5 font-serif text-[2.94rem] leading-[0.98] font-medium tracking-[-0.01em] text-ink uppercase max-[400px]:text-[2.46rem] md:mt-3 md:text-[3.6rem] lg:mt-2.5 lg:text-[clamp(52.8px,4.32vw,67.2px)] lg:leading-[0.95]">
+            <h1 className="mt-2.5 font-serif text-[2.45rem] leading-[0.98] font-medium tracking-[-0.01em] text-ink uppercase max-[400px]:text-[2.05rem] md:mt-3 md:text-5xl lg:mt-2.5 lg:text-[clamp(52.8px,4.32vw,67.2px)] lg:leading-[0.95]">
               <span className="block whitespace-nowrap">{content.headline[0]}</span>
               <span className="block">{content.headline[1]}</span>
             </h1>

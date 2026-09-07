@@ -32,14 +32,14 @@ export default function Footer({ content = site }) {
 
         <div className="mt-3.5 grid grid-cols-3 items-start gap-x-3">
           <div className="min-w-0">
-            <h2 className="text-[0.696rem] font-medium uppercase tracking-[0.16em] text-gold">
+            <h2 className="text-[0.58rem] font-medium uppercase tracking-[0.16em] text-gold">
               {headings.explore}
             </h2>
             <ul className="mt-2 space-y-1">
               {mobileQuickLinks.map((item) => (
                 <li
                   key={item.label}
-                  className="text-[0.864rem] leading-[1.5] text-ink"
+                  className="text-[0.72rem] leading-[1.5] text-ink"
                 >
                   <Link
                     href={item.href}
@@ -53,14 +53,14 @@ export default function Footer({ content = site }) {
           </div>
 
           <div className="min-w-0">
-            <h2 className="text-[0.696rem] font-medium uppercase tracking-[0.16em] text-gold">
+            <h2 className="text-[0.58rem] font-medium uppercase tracking-[0.16em] text-gold">
               {headings.services}
             </h2>
             <ul className="mt-2 space-y-1">
               {mobileServices.map((item) => (
                 <li
                   key={item}
-                  className="text-[0.864rem] leading-[1.5] text-ink"
+                  className="text-[0.72rem] leading-[1.5] text-ink"
                 >
                   {item}
                 </li>
@@ -69,10 +69,10 @@ export default function Footer({ content = site }) {
           </div>
 
           <div className="min-w-0">
-            <h2 className="text-[0.696rem] font-medium uppercase tracking-[0.16em] text-gold">
+            <h2 className="text-[0.58rem] font-medium uppercase tracking-[0.16em] text-gold">
               {headings.contact}
             </h2>
-            <ul className="mt-2 space-y-1 text-[0.864rem] leading-[1.5] text-ink">
+            <ul className="mt-2 space-y-1 text-[0.72rem] leading-[1.5] text-ink">
               {phone ? (
                 <li>
                   <a
@@ -105,7 +105,7 @@ export default function Footer({ content = site }) {
         </div>
 
         <div className="mt-3.5 border-t border-ink/15 pt-2.5">
-          <p className="text-[0.816rem] tracking-wide text-ink/70">
+          <p className="text-[0.68rem] tracking-wide text-ink/70">
             © {year} {copyrightName}
           </p>
         </div>

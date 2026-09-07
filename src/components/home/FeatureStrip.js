@@ -25,10 +25,10 @@ export default function FeatureStrip({ items }) {
                   className="h-8 w-8 text-gold lg:h-[47px] lg:w-[47px]"
                 />
               </div>
-              <h3 className="flex h-full w-full items-start justify-center text-[0.816rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-ink md:mt-3.5 md:h-auto md:items-center lg:mt-0 lg:h-[50px] lg:leading-snug">
+              <h3 className="flex h-full w-full items-start justify-center text-[0.68rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-ink lg:text-[0.816rem] md:mt-3.5 md:h-auto md:items-center lg:mt-0 lg:h-[50px] lg:leading-snug">
                 {item.title}
               </h3>
-              <p className="w-full max-w-[12.5rem] text-[0.96rem] leading-6 text-ink-soft md:mt-2.5 lg:mt-0 lg:text-[15.6px] lg:leading-[1.45]">
+              <p className="w-full max-w-[12.5rem] text-[0.8rem] leading-6 text-ink-soft md:mt-2.5 lg:mt-0 lg:text-[15.6px] lg:leading-[1.45]">
                 {item.lines.map((line, lineIndex) => (
                   <span key={`${item.icon}-${lineIndex}`} className="block">
                     {line}

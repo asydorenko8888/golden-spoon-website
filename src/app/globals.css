@@ -74,13 +74,19 @@ body {
   background: var(--olive-deep);
   color: var(--ivory-soft);
   padding: 0.6rem 1rem;
-  font-size: 0.96rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .skip-link:focus {
   top: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .skip-link {
+    font-size: 0.96rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

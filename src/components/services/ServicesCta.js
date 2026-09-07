@@ -14,10 +14,10 @@ export default function ServicesCta({ content }) {
       />
       <Container className="relative z-[1] flex flex-col items-center gap-4 py-6 text-center md:items-start md:gap-5 md:py-9 md:text-left lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:py-8">
         <div>
-          <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
+          <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}
           </p>
-          <h2 className="mt-2 font-serif text-[2.04rem] leading-[1.1] font-medium tracking-tight text-ink uppercase sm:text-[2.34rem] lg:text-[2.58rem]">
+          <h2 className="mt-2 font-serif text-[1.7rem] leading-[1.1] font-medium tracking-tight text-ink uppercase sm:text-[1.95rem] lg:text-[2.58rem]">
             {content.heading}
           </h2>
         </div>

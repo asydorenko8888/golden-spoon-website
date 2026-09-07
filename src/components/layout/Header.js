@@ -84,7 +84,7 @@ export default function Header({ content = site }) {
         <Button
           href={content.cta.inquireShort.href}
           variant="goldOutline"
-          className="ml-auto inline-flex shrink-0 max-md:min-h-9 max-md:min-w-0 max-md:px-3 max-md:text-[0.744rem] max-md:tracking-[0.16em] md:hidden lg:inline-flex lg:min-h-9 lg:min-w-[6.75rem] lg:px-5"
+          className="ml-auto inline-flex shrink-0 max-md:min-h-9 max-md:min-w-0 max-md:px-3 max-md:text-[0.62rem] max-md:tracking-[0.16em] md:hidden lg:inline-flex lg:min-h-9 lg:min-w-[6.75rem] lg:px-5"
         >
           {content.cta.inquireShort.label}
         </Button>
@@ -126,11 +126,13 @@ export default function Header({ content = site }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`border-b border-line py-4 font-serif text-[1.8rem] ${
+                  className={`border-b border-line py-4 font-serif text-2xl ${
                     isCurrent ? "text-gold" : "text-ink"
                   }`}
                   aria-current={isCurrent ? "page" : undefined}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    if (item.href === pathname) setOpen(false);
+                  }}
                 >
                   {item.label}
                 </Link>
@@ -140,7 +142,9 @@ export default function Header({ content = site }) {
           <Button
             href={content.cta.inquire.href}
             className="mt-8 w-full"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              if (content.cta.inquire.href === pathname) setOpen(false);
+            }}
           >
             {content.cta.inquire.label}
           </Button>

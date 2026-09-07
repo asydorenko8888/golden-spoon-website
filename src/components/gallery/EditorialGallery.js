@@ -110,7 +110,7 @@ export default function EditorialGallery({ images }) {
         >
           <button
             type="button"
-            className="absolute top-5 right-5 text-[0.816rem] font-medium tracking-[0.22em] text-ivory uppercase"
+            className="absolute top-5 right-5 text-[0.68rem] font-medium tracking-[0.22em] text-ivory uppercase lg:text-[0.816rem]"
             onClick={() => setActive(null)}
           >
             Close

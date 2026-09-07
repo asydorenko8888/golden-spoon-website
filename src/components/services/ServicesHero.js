@@ -22,10 +22,10 @@ export default function ServicesHero({ content }) {
 
       <Container className="relative z-[1] flex min-h-[16.5rem] items-center py-8 sm:min-h-[20rem] md:py-14 lg:box-border lg:h-full lg:min-h-0 lg:items-start lg:pt-[4.75rem] lg:pb-8">
         <div className="max-w-[28rem]">
-          <p className="text-[0.816rem] font-medium tracking-[0.26em] text-gold uppercase">
+          <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}
           </p>
-          <h1 className="mt-2.5 font-serif text-[2.58rem] leading-[1.02] font-medium tracking-[-0.01em] text-ink uppercase sm:text-[2.94rem] lg:text-[clamp(43.2px,3.72vw,57.6px)] lg:leading-[1.02]">
+          <h1 className="mt-2.5 font-serif text-[2.15rem] leading-[1.02] font-medium tracking-[-0.01em] text-ink uppercase sm:text-[2.45rem] lg:text-[clamp(43.2px,3.72vw,57.6px)] lg:leading-[1.02]">
             <span className="block">{content.heading[0]}</span>
             <span className="block">{content.heading[1]}</span>
           </h1>
@@ -34,10 +34,10 @@ export default function ServicesHero({ content }) {
             <OliveSprig className="h-4 w-7 text-[#7C8060]" />
             <span className="h-px w-10 bg-gold/70" />
           </div>
-          <p className="mt-4 text-[1.14rem] leading-6 font-medium text-ink lg:text-[18px] lg:leading-[1.5]">
+          <p className="mt-4 text-[0.95rem] leading-6 font-medium text-ink lg:text-[18px] lg:leading-[1.5]">
             {content.lead}
           </p>
-          <p className="mt-2.5 text-[1.08rem] leading-6 text-ink lg:text-[17.4px] lg:leading-[1.55]">
+          <p className="mt-2.5 text-[0.9rem] leading-6 text-ink lg:text-[17.4px] lg:leading-[1.55]">
             {content.copy}
           </p>
           <div className="mt-5 pb-4 md:pb-8 lg:pb-0">

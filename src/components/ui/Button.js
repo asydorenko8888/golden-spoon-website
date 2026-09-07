@@ -22,7 +22,7 @@ export default function Button({
   return (
     <Link
       href={href}
-      className={`inline-flex min-h-12 items-center justify-center px-8 text-center text-[0.816rem] font-medium uppercase tracking-[0.22em] transition-colors duration-300 ${variants[variant]} ${className}`}
+      className={`inline-flex min-h-12 items-center justify-center px-8 text-center text-[0.68rem] font-medium lg:text-[0.816rem] uppercase tracking-[0.22em] transition-colors duration-300 ${variants[variant]} ${className}`}
       {...props}
     >
       {children}

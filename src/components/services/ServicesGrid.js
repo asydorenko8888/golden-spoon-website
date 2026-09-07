@@ -21,19 +21,19 @@ export default function ServicesGrid({ items }) {
                 />
               </div>
               <div className="mt-3 flex gap-3 lg:mt-3.5">
-                <p className="shrink-0 font-serif text-[1.38rem] leading-none text-gold">
+                <p className="shrink-0 font-serif text-[1.15rem] leading-none text-gold lg:text-[1.38rem]">
                   <span className="md:hidden">{Number(item.number)}</span>
                   <span className="hidden md:inline">{item.number}</span>
                 </p>
                 <div className="min-w-0">
-                  <h2 className="font-serif text-[1.2rem] leading-[1.15] font-medium tracking-tight text-ink uppercase lg:text-[1.26rem]">
+                  <h2 className="font-serif text-[1rem] leading-[1.15] font-medium tracking-tight text-ink uppercase lg:text-[1.26rem]">
                     {item.title.map((line) => (
                       <span key={line} className="block">
                         {line}
                       </span>
                     ))}
                   </h2>
-                  <p className="mt-1.5 text-[0.936rem] leading-[1.45] text-ink-soft lg:text-[15.6px] lg:leading-[1.5]">
+                  <p className="mt-1.5 text-[0.78rem] leading-[1.45] text-ink-soft lg:text-[15.6px] lg:leading-[1.5]">
                     {item.copy}
                   </p>
                 </div>

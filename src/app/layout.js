@@ -7,6 +7,8 @@ const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
+  adjustFontFallback: false,
+  preload: true,
 });
 
 const playfair = Playfair_Display({
@@ -14,6 +16,8 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   display: "swap",
+  adjustFontFallback: false,
+  preload: true,
 });
 
 const greatVibes = Great_Vibes({
@@ -21,7 +25,14 @@ const greatVibes = Great_Vibes({
   weight: "400",
   variable: "--font-script-face",
   display: "swap",
+  adjustFontFallback: false,
+  preload: true,
 });
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const dynamic = "force-dynamic";
 
@@ -48,7 +59,9 @@ export default async function RootLayout({ children }) {
       lang="en"
       className={`${outfit.variable} ${playfair.variable} ${greatVibes.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-ivory font-sans text-ink">
+      <body
+        className={`${outfit.className} flex min-h-full flex-col bg-ivory font-sans text-ink`}
+      >
         <SiteChrome settings={settings}>{children}</SiteChrome>
       </body>
     </html>

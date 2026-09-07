@@ -40,6 +40,8 @@
 html {
   color-scheme: light;
   overflow-x: clip;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {

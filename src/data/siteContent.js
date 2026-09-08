@@ -811,12 +811,12 @@ export const faqPage = {
     {
       question: "Can the menu be customized for my event?",
       answer:
-        "Yes. Menus can be tailored to the occasion and client preferences. Tell us about your event and vision, and we’ll work with you to create a menu suited to the experience.",
+        "Yes. Golden Spoon creates catering around each event. We tailor the menu and presentation to the type of occasion, guest count, your preferences, the service format and your overall vision. Share what you’re planning, and we’ll shape an experience that feels personal to you.",
     },
     {
       question: "Do you offer yacht catering?",
       answer:
-        "Yes. Yacht catering is one of Golden Spoon’s catering services, with menus and presentation planned around the occasion.",
+        "Yes. Golden Spoon provides yacht catering. For each event, we coordinate the menu, presentation, delivery and service logistics, guest count, timing and the yacht’s requirements. Logistics that depend on the specific yacht or location are confirmed during the planning process.",
     },
     {
       question: "Do you provide catering for corporate events?",
@@ -831,22 +831,22 @@ export const faqPage = {
     {
       question: "Do you provide food and table presentation?",
       answer:
-        "Yes. Elegant food and table presentation is part of the Golden Spoon service approach, with attention to presentation and event details.",
+        "Yes. Elegant food and table presentation is an important part of the Golden Spoon experience. We thoughtfully coordinate presentation details to complement the style and atmosphere of each event.",
     },
     {
       question: "Is staffed service available?",
       answer:
-        "Golden Spoon catering may be provided as drop-off service or with staffed service, depending on the event and arrangements.",
+        "Yes. Staffed service is available as one of Golden Spoon’s service options. Drop-off catering delivers the food for your event; staffed service includes on-site team support. The appropriate format is determined based on your occasion, and staffing requirements are discussed and included in the proposal.",
     },
     {
       question: "How do I get started?",
       answer:
-        "Send us an inquiry with the basic details of your event. We’ll discuss your occasion, preferences and catering needs before preparing the next steps for your event.",
+        "Send us an inquiry with the basic details of your event. We’ll discuss your occasion, preferences and catering needs, then prepare a proposal for your review. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date.",
     },
     {
       question: "How do payments work?",
       answer:
-        "After the event details and proposal are confirmed, Golden Spoon provides the appropriate invoice or payment link.",
+        "Payment is arranged after your event details, menu, service format and proposal are approved. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date. The remaining balance is paid according to the approved proposal.",
     },
   ],
   cta: {

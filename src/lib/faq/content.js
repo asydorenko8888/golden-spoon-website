@@ -19,6 +19,24 @@ function linesFromCopy(copy, fallbackLines) {
   return lines.length > 0 ? lines : fallbackLines;
 }
 
+const LEGACY_FAQ_ANSWERS = new Set([
+  "Yes. Menus can be tailored to the occasion and client preferences. Tell us about your event and vision, and we’ll work with you to create a menu suited to the experience.",
+  "Yes. Yacht catering is one of Golden Spoon’s catering services, with menus and presentation planned around the occasion.",
+  "Golden Spoon catering may be provided as drop-off service or with staffed service, depending on the event and arrangements.",
+  "Send us an inquiry with the basic details of your event. We’ll discuss your occasion, preferences and catering needs before preparing the next steps for your event.",
+  "After the event details and proposal are confirmed, Golden Spoon provides the appropriate invoice or payment link.",
+  "Yes. Elegant food and table presentation is part of the Golden Spoon service approach, with attention to presentation and event details.",
+  "Payment happens after we review your inquiry and the proposal is approved — including the event details, menu and service format. A 50% deposit is then required to confirm the event date. The remaining balance is paid afterward according to the approved proposal. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date.",
+]);
+
+function resolvedFaqAnswer(storedAnswer, fallback) {
+  const trimmed = typeof storedAnswer === "string" ? storedAnswer.trim() : "";
+  if (!trimmed || LEGACY_FAQ_ANSWERS.has(trimmed)) {
+    return fallback;
+  }
+  return trimmed;
+}
+
 export function getDefaultFaqForm() {
   return {
     hero: {
@@ -85,7 +103,7 @@ export function mergeFaqForm(stored) {
       return {
         id: item.id,
         question: textOrFallback(storedItem.question, item.question),
-        answer: textOrFallback(storedItem.answer, item.answer),
+        answer: resolvedFaqAnswer(storedItem.answer, item.answer),
       };
     }),
     cta: {

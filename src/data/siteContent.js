@@ -339,16 +339,15 @@ export const aboutPage = {
   },
   story: {
     eyebrow: "Our Story",
-    heading: ["A Passion for People", "and Great Food"],
+    heading: ["Boutique Catering,", "Made Personal"],
     copy: [
-      "Golden Spoon was founded with a simple idea — to bring the elegance of European cuisine and the warmth of genuine hospitality to South Florida.",
-      "We believe that exceptional food has the power to bring people together, turning ordinary gatherings into extraordinary memories.",
-      "From intimate private dinners to large corporate events, our team is dedicated to creating a seamless, beautiful and delicious experience for every guest.",
+      "Golden Spoon Boutique Catering creates elegant, thoughtfully crafted catering experiences for private celebrations, corporate events and special occasions throughout South Florida.",
+      "Founded by Svitlana Shepovalova, Golden Spoon is built on more than 15 years of experience in the restaurant and hospitality industry. Inspired by European hospitality, we bring together thoughtfully prepared food, refined presentation and personal attention to every detail.",
     ],
     image: {
       slot: "about-story",
-      src: "/images/about/story.jpg",
-      alt: "A chef finishing a plated scallop dish with microgreens.",
+      src: "/images/about/svitlana.jpg",
+      alt: "Svitlana Shepovalova standing behind a Golden Spoon catering display.",
     },
   },
   values: [
@@ -377,9 +376,8 @@ export const aboutPage = {
     eyebrow: "Our Approach",
     heading: ["Details Make", "the Difference"],
     copy: [
-      "We take care of every detail — from menu planning and presentation to setup and service — so you can focus on what really matters: your guests.",
-      "Our experienced team works closely with each client to understand their vision, preferences and needs, creating a customized experience that reflects their style and exceeds expectations.",
-      "From the first conversation to the final plate, every element is thoughtfully considered to make the experience feel effortless for you and your guests.",
+      "We believe every event should feel personal. From the menu and presentation to the final details, each experience is thoughtfully tailored to the occasion, the setting and the people we serve.",
+      "Our goal is simple — to make every gathering feel special.",
     ],
     cta: {
       href: "/contact",

@@ -15,6 +15,21 @@ function linesFromCopy(copy, fallbackLines) {
   return lines.length > 0 ? lines : fallbackLines;
 }
 
+const LEGACY_STORY_HEADING_1 = "A Passion for People";
+const LEGACY_STORY_HEADING_2 = "and Great Food";
+const LEGACY_STORY_COPY =
+  "Golden Spoon was founded with a simple idea — to bring the elegance of European cuisine and the warmth of genuine hospitality to South Florida.\n\nWe believe that exceptional food has the power to bring people together, turning ordinary gatherings into extraordinary memories.\n\nFrom intimate private dinners to large corporate events, our team is dedicated to creating a seamless, beautiful and delicious experience for every guest.";
+const LEGACY_APPROACH_COPY =
+  "We take care of every detail — from menu planning and presentation to setup and service — so you can focus on what really matters: your guests.\n\nOur experienced team works closely with each client to understand their vision, preferences and needs, creating a customized experience that reflects their style and exceeds expectations.\n\nFrom the first conversation to the final plate, every element is thoughtfully considered to make the experience feel effortless for you and your guests.";
+
+function replaceLegacy(stored, legacy, fallback) {
+  const trimmed = typeof stored === "string" ? stored.trim() : "";
+  if (!trimmed || trimmed === legacy) {
+    return fallback;
+  }
+  return trimmed;
+}
+
 function paragraphsFromCopy(copy, fallbackParagraphs) {
   if (typeof copy !== "string" || copy.trim() === "") {
     return fallbackParagraphs;
@@ -77,9 +92,17 @@ export function mergeAboutForm(stored) {
       copy: textOrFallback(hero.copy, defaults.hero.copy),
     },
     story: {
-      headingLine1: textOrFallback(story.headingLine1, defaults.story.headingLine1),
-      headingLine2: textOrFallback(story.headingLine2, defaults.story.headingLine2),
-      copy: textOrFallback(story.copy, defaults.story.copy),
+      headingLine1: replaceLegacy(
+        story.headingLine1,
+        LEGACY_STORY_HEADING_1,
+        defaults.story.headingLine1,
+      ),
+      headingLine2: replaceLegacy(
+        story.headingLine2,
+        LEGACY_STORY_HEADING_2,
+        defaults.story.headingLine2,
+      ),
+      copy: replaceLegacy(story.copy, LEGACY_STORY_COPY, defaults.story.copy),
     },
     values: defaults.values.map((item, index) => ({
       title: textOrFallback(values[index]?.title, item.title),
@@ -95,7 +118,7 @@ export function mergeAboutForm(stored) {
         approach.headingLine2,
         defaults.approach.headingLine2,
       ),
-      copy: textOrFallback(approach.copy, defaults.approach.copy),
+      copy: replaceLegacy(approach.copy, LEGACY_APPROACH_COPY, defaults.approach.copy),
     },
     cta: {
       eyebrow: textOrFallback(cta.eyebrow, defaults.cta.eyebrow),

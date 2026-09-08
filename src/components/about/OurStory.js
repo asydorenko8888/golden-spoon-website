@@ -25,7 +25,7 @@ export default function OurStory({ content }) {
                 alt={content.image.alt}
                 fill
                 sizes="(min-width: 1024px) 46vw, 100vw"
-                className="object-cover object-center"
+                className="object-cover object-[58%_22%]"
               />
             </div>
           </figure>

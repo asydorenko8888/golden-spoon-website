@@ -480,7 +480,7 @@ export const servicesPage = {
       copy: "Beautifully designed displays with a variety of flavors and textures.",
       image: {
         slot: "service-07",
-        src: "/images/services/grazing-tables.jpg",
+        src: "/images/services/grazing-board.jpg",
         alt: "A coastal brunch table with pastries, fruit and juice.",
       },
     },

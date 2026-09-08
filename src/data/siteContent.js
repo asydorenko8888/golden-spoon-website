@@ -420,7 +420,7 @@ export const servicesPage = {
       copy: "Intimate gatherings with exceptional food and personalized service.",
       image: {
         slot: "service-01",
-        src: "/images/home/service-private.jpg",
+        src: "/images/services/private-parties.jpg",
         alt: "A floral table setting for a private celebration.",
       },
     },
@@ -430,7 +430,7 @@ export const servicesPage = {
       copy: "Memorable celebrations with exquisite cuisine and elegant presentation.",
       image: {
         slot: "service-02",
-        src: "/images/home/gallery-1.jpg",
+        src: "/images/services/birthdays-anniversaries.jpg",
         alt: "An outdoor sunset table with florals, candlelight and gold-rimmed place settings.",
       },
     },
@@ -440,7 +440,7 @@ export const servicesPage = {
       copy: "Beautifully curated menus for life’s special moments.",
       image: {
         slot: "service-03",
-        src: "/images/services/baby-shower.jpg",
+        src: "/images/services/baby-bridal-showers.jpg",
         alt: "A baby shower table with an Oh Baby cake, pink florals, gifts and a teddy bear.",
       },
     },
@@ -450,7 +450,7 @@ export const servicesPage = {
       copy: "Professional catering for business gatherings, conferences and special occasions.",
       image: {
         slot: "service-04",
-        src: "/images/home/service-corporate.jpg",
+        src: "/images/services/corporate-events.jpg",
         alt: "An elegant catering table prepared for a corporate event.",
       },
     },
@@ -460,7 +460,7 @@ export const servicesPage = {
       copy: "Sophisticated small bites and elegant presentations for any event.",
       image: {
         slot: "service-05",
-        src: "/images/home/service-cocktail.jpg",
+        src: "/images/services/cocktail-receptions.jpg",
         alt: "Plated appetizers prepared for a cocktail reception.",
       },
     },
@@ -480,7 +480,7 @@ export const servicesPage = {
       copy: "Beautifully designed displays with a variety of flavors and textures.",
       image: {
         slot: "service-07",
-        src: "/images/home/menu-brunch.png",
+        src: "/images/services/grazing-tables.jpg",
         alt: "A coastal brunch table with pastries, fruit and juice.",
       },
     },
@@ -500,7 +500,7 @@ export const servicesPage = {
       copy: "A refined aesthetic that transforms every event into a memorable experience.",
       image: {
         slot: "service-09",
-        src: "/images/about/approach.jpg",
+        src: "/images/services/table-presentation.jpg",
         alt: "An outdoor waterfront dinner table with florals, candlelight and gold place settings at sunset.",
       },
     },

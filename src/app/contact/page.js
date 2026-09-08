@@ -1,6 +1,6 @@
-import ValuesStrip from "@/components/about/ValuesStrip";
 import ContactClosing from "@/components/contact/ContactClosing";
 import ContactHero from "@/components/contact/ContactHero";
+import ContactStrip from "@/components/contact/ContactStrip";
 import InquirySection from "@/components/contact/InquirySection";
 import ServiceArea from "@/components/contact/ServiceArea";
 import { getPublicContactContent } from "@/lib/contact/getPublicContactContent";
@@ -20,7 +20,7 @@ export default async function ContactPage() {
   return (
     <>
       <ContactHero content={content.hero} />
-      <ValuesStrip items={content.strip} />
+      <ContactStrip items={content.strip} />
       <InquirySection content={content.inquiry} />
       <ServiceArea content={content.serviceArea} />
       <ContactClosing content={content.closing} />

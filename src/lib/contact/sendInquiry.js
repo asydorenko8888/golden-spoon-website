@@ -1,7 +1,6 @@
 import { Resend } from "resend";
 import { contactPage } from "@/data/siteContent";
 
-export const TEST_INQUIRY_RECIPIENT = "a.sydorenko8888@gmail.com";
 export const TEST_INQUIRY_FROM = "Golden Spoon <onboarding@resend.dev>";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,19 +19,29 @@ function displayValue(value) {
   return trimmed || "—";
 }
 
-function eventTypeLabel(value) {
-  const match = contactPage.inquiry.eventTypes.find(
-    (option) => option.value === value,
-  );
+function optionLabel(options, value) {
+  const match = options.find((option) => option.value === value);
   if (!match || !match.value) return displayValue(value);
   return match.label;
+}
+
+function eventTypeLabel(value) {
+  return optionLabel(contactPage.inquiry.eventTypes, value);
+}
+
+function serviceTypeLabel(value) {
+  return optionLabel(contactPage.inquiry.serviceTypes, value);
+}
+
+function budgetLabel(value) {
+  return optionLabel(contactPage.inquiry.budgetOptions, value);
 }
 
 export function getInquiryMailConfig() {
   return {
     apiKey: process.env.RESEND_API_KEY ?? "",
     from: process.env.RESEND_FROM_EMAIL?.trim() || TEST_INQUIRY_FROM,
-    to: process.env.INQUIRY_TO_EMAIL?.trim() || TEST_INQUIRY_RECIPIENT,
+    to: process.env.INQUIRY_TO_EMAIL?.trim() || "",
   };
 }
 
@@ -48,6 +57,11 @@ export function validateInquiryPayload(body) {
     errors.email = "Please enter a valid email.";
   }
 
+  const serviceType = String(body?.serviceType ?? "").trim();
+  if (!serviceType) {
+    errors.serviceType = "Please select a service type.";
+  }
+
   return {
     errors,
     values: {
@@ -56,7 +70,9 @@ export function validateInquiryPayload(body) {
       phone: String(body?.phone ?? "").trim(),
       date: String(body?.date ?? "").trim(),
       eventType: String(body?.eventType ?? "").trim(),
+      serviceType,
       guests: String(body?.guests ?? "").trim(),
+      budget: String(body?.budget ?? "").trim(),
       location: String(body?.location ?? "").trim(),
       message: String(body?.message ?? "").trim(),
     },
@@ -70,6 +86,8 @@ export function buildInquiryEmail(values) {
     ["Phone", values.phone],
     ["Event date", values.date],
     ["Event type", eventTypeLabel(values.eventType)],
+    ["Service type", serviceTypeLabel(values.serviceType)],
+    ["Estimated catering budget", budgetLabel(values.budget)],
     ["Number of guests", values.guests],
     ["Event location", values.location],
     ["Message", values.message],
@@ -111,6 +129,12 @@ export async function sendInquiryEmail(values) {
     throw error;
   }
 
+  if (!to) {
+    const error = new Error("Inquiry recipient is not configured.");
+    error.status = 503;
+    throw error;
+  }
+
   const { text, html } = buildInquiryEmail(values);
   const resend = new Resend(apiKey);
   const replyTo = emailPattern.test(values.email) ? values.email : undefined;
@@ -119,7 +143,7 @@ export async function sendInquiryEmail(values) {
     from,
     to,
     replyTo,
-    subject: `Golden Spoon inquiry from ${values.name}`,
+    subject: "New Golden Spoon Catering Inquiry",
     text,
     html,
   });

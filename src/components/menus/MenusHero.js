@@ -17,26 +17,29 @@ export default function MenusHero({ content }) {
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="object-cover object-center"
         />
         <div
-          className="pointer-events-none absolute inset-0 lg:hidden"
+          className="pointer-events-none absolute inset-0 overflow-hidden"
           style={{
-            backgroundImage:
-              "linear-gradient(90deg, rgba(253,251,247,0.96) 0%, rgba(253,251,247,0.88) 28%, rgba(253,251,247,0.55) 45%, rgba(253,251,247,0.18) 60%, rgba(253,251,247,0) 75%)",
+            WebkitMaskImage:
+              "linear-gradient(90deg, #000 0%, #000 36%, transparent 64%)",
+            maskImage:
+              "linear-gradient(90deg, #000 0%, #000 36%, transparent 64%)",
           }}
           aria-hidden="true"
-        />
+        >
+          <Image
+            src={content.image.src}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="scale-110 object-cover object-center blur-2xl"
+          />
+        </div>
         <div
-          className="pointer-events-none absolute inset-y-0 left-0 hidden w-[min(46%,42rem)] bg-ivory lg:block"
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute inset-0 hidden lg:block"
-          style={{
-            backgroundImage:
-              "linear-gradient(90deg, #FDFBF7 0%, #FDFBF7 46%, rgba(253,251,247,0.88) 52%, rgba(253,251,247,0.35) 62%, rgba(253,251,247,0) 76%)",
-          }}
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ivory from-[12%] via-ivory/85 to-ivory/10 sm:via-ivory/75 lg:to-transparent"
           aria-hidden="true"
         />
       </div>

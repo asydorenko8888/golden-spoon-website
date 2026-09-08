@@ -35,7 +35,10 @@ export default function InquirySection({ content }) {
           <div className="mt-5 min-w-0 md:mt-8 lg:mt-0">
             <InquiryForm
               eventTypes={content.eventTypes}
+              serviceTypes={content.serviceTypes}
+              budgetOptions={content.budgetOptions}
               success={content.success}
+              bookingNotice={content.bookingNotice}
               labels={content.form?.labels}
               messagePlaceholder={content.form?.messagePlaceholder}
               submitLabel={content.form?.submitLabel}

@@ -874,8 +874,8 @@ export const contactPage = {
   strip: [
     {
       icon: "pin",
-      title: "Address",
-      lines: ["ADDRESS TO BE ADDED"],
+      title: "Service Area",
+      lines: ["Miami-Dade · Broward · Palm Beach"],
     },
     {
       icon: "phone",
@@ -912,9 +912,28 @@ export const contactPage = {
       { value: "grazing", label: "Grazing Table / Station" },
       { value: "other", label: "Other" },
     ],
+    serviceTypes: [
+      { value: "", label: "Select service type" },
+      { value: "drop-off", label: "Drop-Off Catering" },
+      { value: "full-service", label: "Full-Service Catering" },
+      { value: "staffed", label: "Staffed Service" },
+      { value: "not-sure", label: "Not Sure — I’d Like a Recommendation" },
+    ],
+    budgetOptions: [
+      { value: "", label: "Select budget" },
+      { value: "under-1000", label: "Under $1,000" },
+      { value: "1000-2500", label: "$1,000 – $2,500" },
+      { value: "2500-5000", label: "$2,500 – $5,000" },
+      { value: "5000-10000", label: "$5,000 – $10,000" },
+      { value: "10000-plus", label: "$10,000+" },
+      { value: "not-sure", label: "Not Sure Yet" },
+    ],
+    bookingNotice:
+      "Submitting an inquiry does not reserve your event date. Your date is confirmed upon approval of the proposal and receipt of the required deposit.",
     success: {
       eyebrow: "Thank You",
-      copy: "Your inquiry has been received.",
+      copy: "Thank you for contacting Golden Spoon. Your inquiry has been received. We’ll review your event details and get back to you shortly.",
+      note: "Please note: submitting an inquiry does not reserve your event date.",
     },
   },
   serviceArea: {

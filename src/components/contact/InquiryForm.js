@@ -8,10 +8,39 @@ const initialValues = {
   phone: "",
   date: "",
   eventType: "",
+  serviceType: "",
   guests: "",
+  budget: "",
   location: "",
   message: "",
 };
+
+const DEFAULT_SUCCESS = {
+  eyebrow: "Thank You",
+  copy: "Thank you for contacting Golden Spoon. Your inquiry has been received. We’ll review your event details and get back to you shortly.",
+  note: "Please note: submitting an inquiry does not reserve your event date.",
+};
+
+const DEFAULT_BOOKING_NOTICE =
+  "Submitting an inquiry does not reserve your event date. Your date is confirmed upon approval of the proposal and receipt of the required deposit.";
+
+const DEFAULT_SERVICE_TYPES = [
+  { value: "", label: "Select service type" },
+  { value: "drop-off", label: "Drop-Off Catering" },
+  { value: "full-service", label: "Full-Service Catering" },
+  { value: "staffed", label: "Staffed Service" },
+  { value: "not-sure", label: "Not Sure — I’d Like a Recommendation" },
+];
+
+const DEFAULT_BUDGET_OPTIONS = [
+  { value: "", label: "Select budget" },
+  { value: "under-1000", label: "Under $1,000" },
+  { value: "1000-2500", label: "$1,000 – $2,500" },
+  { value: "2500-5000", label: "$2,500 – $5,000" },
+  { value: "5000-10000", label: "$5,000 – $10,000" },
+  { value: "10000-plus", label: "$10,000+" },
+  { value: "not-sure", label: "Not Sure Yet" },
+];
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -46,7 +75,10 @@ function Field({ id, label, className = "", error, errorId, children }) {
 
 export default function InquiryForm({
   eventTypes,
+  serviceTypes = DEFAULT_SERVICE_TYPES,
+  budgetOptions = DEFAULT_BUDGET_OPTIONS,
   success,
+  bookingNotice = DEFAULT_BOOKING_NOTICE,
   labels = {},
   messagePlaceholder = "Tell us about your event, preferences and anything you’d like us to know.",
   submitLabel = "Send Inquiry",
@@ -57,10 +89,17 @@ export default function InquiryForm({
     phone: "Phone",
     date: "Event Date",
     eventType: "Event Type",
+    serviceType: "Service Type",
     guests: "Number of Guests",
+    budget: "Estimated Catering Budget",
     location: "Event Location",
     message: "Tell Us About Your Event",
     ...labels,
+  };
+  const confirmation = {
+    eyebrow: success?.eyebrow || DEFAULT_SUCCESS.eyebrow,
+    copy: DEFAULT_SUCCESS.copy,
+    note: success?.note || DEFAULT_SUCCESS.note,
   };
   const formId = useId();
   const [values, setValues] = useState(initialValues);
@@ -90,6 +129,9 @@ export default function InquiryForm({
       nextErrors.email = "Please enter your email.";
     } else if (!emailPattern.test(nextValues.email.trim())) {
       nextErrors.email = "Please enter a valid email.";
+    }
+    if (!nextValues.serviceType.trim()) {
+      nextErrors.serviceType = "Please select a service type.";
     }
     return nextErrors;
   }
@@ -148,10 +190,13 @@ export default function InquiryForm({
         aria-live="polite"
       >
         <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
-          {success.eyebrow}
+          {confirmation.eyebrow}
         </p>
-        <p className="mt-3 font-serif text-[1.7rem] leading-[1.12] font-medium tracking-tight text-ink uppercase sm:text-[1.95rem] lg:text-[2.34rem]">
-          {success.copy}
+        <p className="mt-3 text-[0.95rem] leading-7 text-ink lg:text-[18px] lg:leading-[1.7]">
+          {confirmation.copy}
+        </p>
+        <p className="mt-4 text-[0.9rem] leading-6 text-ink-soft italic lg:text-[17.4px]">
+          {confirmation.note}
         </p>
       </div>
     );
@@ -249,6 +294,32 @@ export default function InquiryForm({
           </select>
         </Field>
 
+        <Field
+          id={`${formId}-serviceType`}
+          label={fieldLabels.serviceType}
+          error={errors.serviceType}
+          errorId={`${formId}-serviceType-error`}
+        >
+          <select
+            id={`${formId}-serviceType`}
+            name="serviceType"
+            required
+            value={values.serviceType}
+            onChange={(event) => update("serviceType", event.target.value)}
+            aria-invalid={Boolean(errors.serviceType)}
+            aria-describedby={
+              errors.serviceType ? `${formId}-serviceType-error` : undefined
+            }
+            className={`${fieldClass} bg-ivory`}
+          >
+            {serviceTypes.map((option) => (
+              <option key={option.label} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </Field>
+
         <Field id={`${formId}-guests`} label={fieldLabels.guests}>
           <input
             id={`${formId}-guests`}
@@ -259,6 +330,22 @@ export default function InquiryForm({
             onChange={(event) => update("guests", event.target.value)}
             className={fieldClass}
           />
+        </Field>
+
+        <Field id={`${formId}-budget`} label={fieldLabels.budget}>
+          <select
+            id={`${formId}-budget`}
+            name="budget"
+            value={values.budget}
+            onChange={(event) => update("budget", event.target.value)}
+            className={`${fieldClass} bg-ivory`}
+          >
+            {budgetOptions.map((option) => (
+              <option key={option.label} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
         </Field>
 
         <Field
@@ -307,6 +394,9 @@ export default function InquiryForm({
         >
           {submitting ? "Sending…" : submitLabel}
         </button>
+        <p className="mt-4 max-w-[36rem] text-[0.78rem] leading-5 text-ink-soft lg:text-[0.864rem] lg:leading-6">
+          {bookingNotice}
+        </p>
       </div>
     </form>
   );

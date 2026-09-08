@@ -31,11 +31,58 @@ function linesFromCopy(copy, fallbackLines) {
   return lines.length > 0 ? lines : fallbackLines;
 }
 
+const ADDRESS_PLACEHOLDER = /address to be added/i;
+const SERVICE_AREA_TITLE = "Service Area";
+const SERVICE_AREA_COPY = "Miami-Dade · Broward · Palm Beach";
+
 function telHref(phone) {
   const trimmed = (phone ?? "").trim();
   if (!trimmed) return undefined;
   const digits = trimmed.replace(/[^\d+]/g, "");
   return digits ? `tel:${digits}` : undefined;
+}
+
+function smsHref(phone) {
+  const trimmed = (phone ?? "").trim();
+  if (!trimmed) return undefined;
+  const digits = trimmed.replace(/[^\d+]/g, "");
+  return digits ? `sms:${digits}` : undefined;
+}
+
+function whatsappHref(phone) {
+  const trimmed = (phone ?? "").trim();
+  if (!trimmed) return undefined;
+  let digits = trimmed.replace(/\D/g, "");
+  if (!digits) return undefined;
+  if (digits.length === 10) digits = `1${digits}`;
+  return `https://wa.me/${digits}`;
+}
+
+function phoneContactActions(phone) {
+  const callHref = telHref(phone);
+  const textHref = smsHref(phone);
+  const chatHref = whatsappHref(phone);
+  if (!callHref || !textHref || !chatHref) return undefined;
+
+  return [
+    { label: "Call", href: callHref },
+    { label: "Text", href: textHref },
+    { label: "WhatsApp", href: chatHref, external: true },
+  ];
+}
+
+function resolveStripItem(item, title, copy) {
+  if (item.icon !== "pin") return { title, copy };
+
+  if (ADDRESS_PLACEHOLDER.test(copy) || ADDRESS_PLACEHOLDER.test(title)) {
+    return { title: SERVICE_AREA_TITLE, copy: SERVICE_AREA_COPY };
+  }
+
+  if (/^address$/i.test(title)) {
+    return { title: SERVICE_AREA_TITLE, copy: copy || SERVICE_AREA_COPY };
+  }
+
+  return { title, copy };
 }
 
 function mailtoHref(email) {
@@ -192,6 +239,9 @@ function applyStripItem(item, title, copy) {
     const href = telHref(displayed);
     if (href) next.href = href;
     else delete next.href;
+    const actions = phoneContactActions(displayed);
+    if (actions) next.actions = actions;
+    else delete next.actions;
   }
 
   if (item.icon === "envelope") {
@@ -236,9 +286,14 @@ export function applyContactForm(form) {
       heading: [merged.hero.headingLine1, merged.hero.headingLine2],
       copy: merged.hero.copy,
     },
-    strip: contactPage.strip.map((item, index) =>
-      applyStripItem(item, merged.strip[index].title, merged.strip[index].copy),
-    ),
+    strip: contactPage.strip.map((item, index) => {
+      const resolved = resolveStripItem(
+        item,
+        merged.strip[index].title,
+        merged.strip[index].copy,
+      );
+      return applyStripItem(item, resolved.title, resolved.copy);
+    }),
     inquiry: {
       ...contactPage.inquiry,
       eyebrow: merged.inquiry.eyebrow,

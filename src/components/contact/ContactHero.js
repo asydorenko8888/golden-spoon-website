@@ -18,7 +18,40 @@ export default function ContactHero({ content }) {
           className="object-cover object-[center_40%]"
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ivory from-[12%] via-ivory/85 to-ivory/10 sm:via-ivory/75 lg:to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-0 hidden w-[62%] overflow-hidden lg:block"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(90deg, #000 0%, #000 36%, rgba(0,0,0,0.55) 68%, rgba(0,0,0,0.15) 86%, transparent 100%)",
+            maskImage:
+              "linear-gradient(90deg, #000 0%, #000 36%, rgba(0,0,0,0.55) 68%, rgba(0,0,0,0.15) 86%, transparent 100%)",
+            WebkitMaskSize: "100% 100%",
+            maskSize: "100% 100%",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+          }}
+          aria-hidden="true"
+        >
+          <div className="absolute inset-y-0 left-0 h-full w-[161.29%]">
+            <Image
+              src={content.image.src}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="scale-110 object-cover object-[center_40%] blur-2xl"
+            />
+          </div>
+        </div>
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ivory from-[12%] via-ivory/85 to-ivory/10 sm:via-ivory/75 lg:hidden"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-0 hidden lg:block"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, var(--ivory) 0%, var(--ivory) 12%, color-mix(in srgb, var(--ivory) 75%, transparent) 32%, transparent 58%)",
+          }}
           aria-hidden="true"
         />
       </div>

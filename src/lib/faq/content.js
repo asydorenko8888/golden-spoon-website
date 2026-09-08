@@ -27,6 +27,9 @@ const LEGACY_FAQ_ANSWERS = new Set([
   "After the event details and proposal are confirmed, Golden Spoon provides the appropriate invoice or payment link.",
   "Yes. Elegant food and table presentation is part of the Golden Spoon service approach, with attention to presentation and event details.",
   "Payment happens after we review your inquiry and the proposal is approved — including the event details, menu and service format. A 50% deposit is then required to confirm the event date. The remaining balance is paid afterward according to the approved proposal. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date.",
+  "Yes. Golden Spoon offers grazing tables and stations as part of its catering services.",
+  "Send us an inquiry with the basic details of your event. We’ll discuss your occasion, preferences and catering needs, then prepare a proposal for your review. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date.",
+  "Payment is arranged after your event details, menu, service format and proposal are approved. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date. The remaining balance is paid according to the approved proposal.",
 ]);
 
 function resolvedFaqAnswer(storedAnswer, fallback) {

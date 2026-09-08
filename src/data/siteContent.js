@@ -826,7 +826,7 @@ export const faqPage = {
     {
       question: "Do you offer grazing tables and food stations?",
       answer:
-        "Yes. Golden Spoon offers grazing tables and stations as part of its catering services.",
+        "Yes. Golden Spoon offers grazing tables and food stations as part of its catering services. The format, selection and presentation can be tailored to the type of event, number of guests and overall style of the occasion.",
     },
     {
       question: "Do you provide food and table presentation?",
@@ -841,12 +841,12 @@ export const faqPage = {
     {
       question: "How do I get started?",
       answer:
-        "Send us an inquiry with the basic details of your event. We’ll discuss your occasion, preferences and catering needs, then prepare a proposal for your review. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date.",
+        "Send us an inquiry with the basic details of your event. We’ll discuss your occasion, preferences and catering needs, then prepare a personalized proposal for your review.",
     },
     {
       question: "How do payments work?",
       answer:
-        "Payment is arranged after your event details, menu, service format and proposal are approved. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date. The remaining balance is paid according to the approved proposal.",
+        "Payment is arranged according to your approved proposal. Event dates are confirmed upon approval of the proposal and receipt of a 50% deposit. Submission of an inquiry does not reserve your date. The remaining balance is paid according to the terms outlined in the approved proposal.",
     },
   ],
   cta: {

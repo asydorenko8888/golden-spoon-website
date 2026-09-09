@@ -568,8 +568,7 @@ export const galleryPage = {
       lines: ["Grazing tables & elegant", "food presentation."],
     },
   ],
-  // Temporary placeholder events for the public Gallery layout.
-  // Replace with real events when the admin CMS is connected.
+  // Public fallback until at least one Gallery event exists in Supabase.
   events: [
     {
       id: "placeholder-private-dinner",

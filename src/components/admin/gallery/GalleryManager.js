@@ -80,18 +80,22 @@ export default function GalleryManager() {
   useEffect(() => {
     let active = true;
 
-    loadImages()
-      .catch((error) => {
+    async function load() {
+      try {
+        await loadImages();
+      } catch (error) {
         if (active) {
           const detail =
             error instanceof Error ? error.message : "Unknown Supabase error";
           showMessage("error", `Could not load gallery images. ${detail}`);
           console.error("Gallery load failed:", error);
         }
-      })
-      .finally(() => {
+      } finally {
         if (active) setLoading(false);
-      });
+      }
+    }
+
+    void load();
 
     return () => {
       active = false;

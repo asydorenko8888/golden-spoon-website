@@ -1,5 +1,5 @@
-import GalleryManager from "@/components/admin/gallery/GalleryManager";
+import GalleryEventsManager from "@/components/admin/gallery/GalleryEventsManager";
 
 export default function AdminGalleryPage() {
-  return <GalleryManager />;
+  return <GalleryEventsManager />;
 }

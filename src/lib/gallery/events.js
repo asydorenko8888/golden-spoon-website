@@ -21,6 +21,24 @@ export function normalizeGalleryEvents(events = []) {
     }));
 }
 
+export function formatGalleryEventDate(value) {
+  if (typeof value !== "string" || value.trim() === "") {
+    return "";
+  }
+
+  const match = /^(\d{4})-(\d{2})/.exec(value);
+  if (!match) {
+    return value;
+  }
+
+  const date = new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, 1));
+  return date.toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 export function formatEventMeta(event) {
   return [event.location, event.date].filter(Boolean).join(" · ");
 }

@@ -568,6 +568,103 @@ export const galleryPage = {
       lines: ["Grazing tables & elegant", "food presentation."],
     },
   ],
+  // Temporary placeholder events for the public Gallery layout.
+  // Replace with real events when the admin CMS is connected.
+  events: [
+    {
+      id: "placeholder-private-dinner",
+      title: "Private Birthday Dinner",
+      date: "August 2026",
+      location: "Miami Beach",
+      description:
+        "Intimate birthday celebration with a custom European-inspired menu and elegant table presentation.",
+      sort_order: 1,
+      photos: [
+        {
+          id: "placeholder-private-dinner-1",
+          image_url: "/images/gallery/grazing-table.jpg",
+          alt_text: "A grazing table with cheeses, fruit, sliders and canapés.",
+          sort_order: 1,
+        },
+        {
+          id: "placeholder-private-dinner-2",
+          image_url: "/images/gallery/baby-shower.jpg",
+          alt_text: "A celebration table with cake, grazing board, florals and desserts.",
+          sort_order: 2,
+        },
+        {
+          id: "placeholder-private-dinner-3",
+          image_url: "/images/gallery/victoria-setup.jpg",
+          alt_text: "Plated appetizer display at an outdoor event.",
+          sort_order: 3,
+        },
+      ],
+    },
+    {
+      id: "placeholder-waterfront",
+      title: "Waterfront Reception",
+      date: "June 2026",
+      location: "South Florida",
+      description:
+        "An outdoor reception with refined table presentation beside the water.",
+      sort_order: 2,
+      photos: [
+        {
+          id: "placeholder-waterfront-1",
+          image_url: "/images/gallery/yacht-sunset.jpg",
+          alt_text: "Waterfront catering at sunset with hors d’oeuvres and champagne.",
+          sort_order: 1,
+        },
+        {
+          id: "placeholder-waterfront-2",
+          image_url: "/images/gallery/yacht-portrait.jpg",
+          alt_text: "A waterfront table setting with the marina beyond.",
+          sort_order: 2,
+        },
+        {
+          id: "placeholder-waterfront-3",
+          image_url: "/images/gallery/uzvar-spritz.jpg",
+          alt_text: "A beverage dispenser with parfait cups on a catering table.",
+          sort_order: 3,
+        },
+      ],
+    },
+    {
+      id: "placeholder-styled-celebration",
+      title: "Styled Celebration",
+      date: "July 2026",
+      location: "",
+      description:
+        "A styled celebration with custom menu presentation and thoughtful table details.",
+      sort_order: 3,
+      photos: [
+        {
+          id: "placeholder-styled-1",
+          image_url: "/images/gallery/fashion4ukraine-menu.jpg",
+          alt_text: "A custom menu card on a styled catering table.",
+          sort_order: 1,
+        },
+        {
+          id: "placeholder-styled-2",
+          image_url: "/images/gallery/fashion-attendees.jpg",
+          alt_text: "Guests gathered at a styled indoor celebration.",
+          sort_order: 2,
+        },
+        {
+          id: "placeholder-styled-3",
+          image_url: "/images/gallery/fashion-mannequins.jpg",
+          alt_text: "A fashion display beside an event setup.",
+          sort_order: 3,
+        },
+        {
+          id: "placeholder-styled-4",
+          image_url: "/images/gallery/uzvar-spritz.jpg",
+          alt_text: "A beverage station with dessert cups.",
+          sort_order: 4,
+        },
+      ],
+    },
+  ],
   images: [
     {
       slot: "gallery-yacht-sunset",

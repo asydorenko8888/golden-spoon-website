@@ -1,8 +1,8 @@
 import ValuesStrip from "@/components/about/ValuesStrip";
-import EditorialGallery from "@/components/gallery/EditorialGallery";
+import EventList from "@/components/gallery/EventList";
 import GalleryCta from "@/components/gallery/GalleryCta";
 import GalleryHero from "@/components/gallery/GalleryHero";
-import { getPublicGalleryImages } from "@/lib/gallery/getPublicGalleryImages";
+import { getPublicGalleryEvents } from "@/lib/gallery/getPublicGalleryEvents";
 import { galleryPage, site } from "@/data/siteContent";
 
 export const dynamic = "force-dynamic";
@@ -14,14 +14,13 @@ export const metadata = {
 };
 
 export default async function GalleryPage() {
-  const images = await getPublicGalleryImages();
+  const events = await getPublicGalleryEvents();
 
   return (
     <>
       <GalleryHero content={galleryPage.hero} />
       <ValuesStrip items={galleryPage.strip} />
-      <EditorialGallery images={images} />
-      <script src="/gallery-lightbox.js" defer />
+      <EventList events={events} />
       <GalleryCta content={galleryPage.cta} />
     </>
   );

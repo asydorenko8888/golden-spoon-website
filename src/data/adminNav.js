@@ -7,6 +7,7 @@ export const adminNav = [
   { href: "/admin/menus", label: "Menus" },
   { href: "/admin/faq", label: "FAQ" },
   { href: "/admin/contact", label: "Contact" },
+  { href: "/admin/clients", label: "Clients" },
   { href: "/admin/settings", label: "Settings" },
 ];
 
@@ -35,5 +36,10 @@ export const adminCards = [
     href: "/admin/contact",
     title: "Contact Information",
     copy: "Phone, email and service area details.",
+  },
+  {
+    href: "/admin/clients",
+    title: "Clients",
+    copy: "Manage inquiries, client details and event status.",
   },
 ];

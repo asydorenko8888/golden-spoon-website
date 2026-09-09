@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { adminCards } from "@/data/adminNav";
+import { getNewInquiryCount } from "@/lib/clients/getNewInquiryCount";
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage() {
+  const newInquiries = await getNewInquiryCount();
+
   return (
     <section>
       <h1 className="text-2xl font-semibold tracking-tight text-neutral-900">
@@ -20,6 +23,11 @@ export default function AdminDashboardPage() {
             >
               <h2 className="text-base font-semibold text-neutral-900">{card.title}</h2>
               <p className="mt-2 text-sm leading-6 text-neutral-600">{card.copy}</p>
+              {card.href === "/admin/clients" && typeof newInquiries === "number" ? (
+                <p className="mt-3 text-xs font-medium tracking-[0.12em] text-[#8a6d3c] uppercase">
+                  {newInquiries === 1 ? "1 new inquiry" : `${newInquiries} new inquiries`}
+                </p>
+              ) : null}
             </Link>
           </li>
         ))}

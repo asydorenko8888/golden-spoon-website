@@ -574,6 +574,7 @@ export const galleryPage = {
       id: "placeholder-private-dinner",
       title: "Private Birthday Dinner",
       date: "August 2026",
+      date_label: "August 2026",
       location: "Miami Beach",
       description:
         "Intimate birthday celebration with a custom European-inspired menu and elegant table presentation.",
@@ -603,6 +604,7 @@ export const galleryPage = {
       id: "placeholder-waterfront",
       title: "Waterfront Reception",
       date: "June 2026",
+      date_label: "June 2026",
       location: "South Florida",
       description:
         "An outdoor reception with refined table presentation beside the water.",
@@ -632,6 +634,7 @@ export const galleryPage = {
       id: "placeholder-styled-celebration",
       title: "Styled Celebration",
       date: "July 2026",
+      date_label: "July 2026",
       location: "",
       description:
         "A styled celebration with custom menu presentation and thoughtful table details.",

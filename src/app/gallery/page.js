@@ -14,7 +14,16 @@ export const metadata = {
 };
 
 export default async function GalleryPage() {
-  const events = await getPublicGalleryEvents();
+  const events = (await getPublicGalleryEvents()).map((event) => ({
+    id: event.id,
+    title: event.title,
+    date: event.date,
+    date_label: event.date_label,
+    location: event.location,
+    caption: event.caption,
+    description: event.description,
+    cover: event.cover,
+  }));
 
   return (
     <>

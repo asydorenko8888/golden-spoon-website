@@ -502,6 +502,16 @@ export const servicesPage = {
         alt: "An outdoor waterfront dinner table with florals, candlelight and gold place settings at sunset.",
       },
     },
+    {
+      number: "10",
+      title: ["Corporate Lunches", "& Office Catering"],
+      copy: "Thoughtfully prepared corporate lunches and office catering for meetings, team gatherings and workplace events, with flexible menus, elegant presentation and convenient service options.",
+      image: {
+        slot: "service-10",
+        src: "/images/services/corporate-lunches.jpg",
+        alt: "A Golden Spoon corporate lunch at an office conference table.",
+      },
+    },
   ],
   strip: [
     {
@@ -846,13 +856,165 @@ export const menusPage = {
       alt: "Seared scallops plated for an elegant dinner.",
     },
   },
+  intro: {
+    heading: ["Sample Catering Collections", "& Custom Menus"],
+    copy: "Golden Spoon creates customized menus for each event based on the occasion, guest count, service format, location and client preferences. The collections below are examples and starting points for planning your event.",
+    priceGuidance:
+      "Sample collections starting from $49 per guest. Custom menus and pricing are created based on your event, guest count and service needs.",
+  },
+  yacht: {
+    eyebrow: "Yacht Catering Collections",
+    attendantNote:
+      "Optional professional Golden Spoon attendant service is available and priced separately.",
+    collections: [
+      {
+        id: "coastal",
+        title: "Coastal Yacht Collection",
+        price: "$49 per guest",
+        minimum: "Minimum 10 guests",
+        image: {
+          src: "/images/menus/yacht-coastal-collection.jpg",
+          alt: "Golden Spoon Coastal Yacht Collection menu, $49 per guest.",
+          width: 1530,
+          height: 1980,
+        },
+      },
+      {
+        id: "signature",
+        title: "Signature Yacht Collection",
+        price: "$65 per guest",
+        minimum: "Minimum 10 guests",
+        image: {
+          src: "/images/menus/yacht-signature-collection.jpg",
+          alt: "Golden Spoon Signature Yacht Collection menu, $65 per guest.",
+          width: 1530,
+          height: 1980,
+        },
+      },
+      {
+        id: "luxury",
+        title: "Luxury Yacht Experience",
+        price: "$85 per guest",
+        minimum: "",
+        image: {
+          src: "/images/menus/yacht-luxury-experience.jpg",
+          alt: "Golden Spoon Luxury Yacht Experience menu, $85 per guest, with optional attendant service.",
+          width: 1530,
+          height: 1980,
+        },
+      },
+    ],
+  },
+  celebrations: {
+    eyebrow: "Private Celebrations",
+    copy: "Sample menu collections created for private celebrations. Final menus and pricing are customized for each event.",
+    note: "On-site setup, staffing, grill service and other additional services may be priced separately depending on the event.",
+    items: [
+      {
+        title: "Classic Celebration Menu",
+        price: "Approximately $55 per guest",
+        image: {
+          src: "/images/menus/classic-celebration-menu.jpg",
+          alt: "Golden Spoon Classic Celebration Menu, approximately $55 per guest.",
+          width: 682,
+          height: 1024,
+        },
+      },
+      {
+        title: "Premium Celebration Menu",
+        price: "Approximately $65 per guest",
+        image: {
+          src: "/images/menus/premium-celebration-menu.jpg",
+          alt: "Golden Spoon Premium Celebration Menu, approximately $65 per guest.",
+          width: 723,
+          height: 1024,
+        },
+      },
+    ],
+  },
+  customEvents: [
+    {
+      eyebrow: "Custom Event Menus",
+      context:
+        "A custom cocktail reception menu created specifically for a real Golden Spoon event.",
+      note: "",
+      layout: "pair",
+      items: [
+        {
+          title: "Miss Universe Cuba\nCuban Cocktail Reception",
+          image: {
+            src: "/images/menus/miss-universe-cuba-cocktail.jpg",
+            alt: "Custom Miss Universe Cuba Cuban Cocktail Reception menu by Golden Spoon.",
+            width: 682,
+            height: 1024,
+          },
+        },
+      ],
+    },
+    {
+      eyebrow: "",
+      context:
+        "A custom menu created for the Miss Universe Cuba beauty experience.",
+      note: "",
+      layout: "pair",
+      items: [
+        {
+          title: "Beauty Lounge Collection",
+          image: {
+            src: "/images/menus/miss-universe-cuba-beauty-lounge.jpg",
+            alt: "Custom Miss Universe Cuba Beauty Lounge Collection menu by Golden Spoon.",
+            width: 682,
+            height: 1024,
+          },
+        },
+      ],
+    },
+    {
+      eyebrow: "Special Event Menu",
+      context:
+        "A custom cocktail reception menu created for a real Golden Spoon event.",
+      note: "",
+      layout: "pair",
+      items: [
+        {
+          title: "Fashion 4 Ukraine × Miami Swim Week",
+          image: {
+            src: "/images/menus/fashion-4-ukraine-miami-swim-week.jpg",
+            alt: "Custom Fashion 4 Ukraine × Miami Swim Week cocktail reception menu by Golden Spoon.",
+            width: 771,
+            height: 1024,
+          },
+        },
+      ],
+    },
+    {
+      eyebrow: "Ukrainian-Inspired Special Menu",
+      context:
+        "A custom cultural event menu featuring Kyiv Cake Verrine, Blueberry Mint Lemonade and Ukrainian Uzvar Spritz.",
+      note: "",
+      layout: "pair",
+      items: [
+        {
+          title: "World Vyshyvanka Day",
+          image: {
+            src: "/images/menus/world-vyshyvanka-day.jpg",
+            alt: "Custom World Vyshyvanka Day celebration menu by Golden Spoon.",
+            width: 972,
+            height: 1024,
+          },
+        },
+      ],
+    },
+  ],
+  disclaimer:
+    "Prices shown are starting or sample prices and may change depending on the final menu, guest count, event location and service requirements.",
   cta: {
     eyebrow: "Let’s Create Your Menu",
-    heading: "Let’s create your menu",
-    copy: "Tell us about your event and we'll help create a catering experience tailored to you.",
+    heading: "Request a Custom Menu",
+    copy: "Tell us about your event and we’ll create a menu around your occasion, guests and service needs.",
     button: {
-      href: "/contact",
-      label: "Inquire About Your Event",
+      href: "/contact#inquiry",
+      label: "Request a Custom Menu",
     },
   },
 };
@@ -1008,6 +1170,7 @@ export const contactPage = {
       { value: "yacht", label: "Yacht Catering" },
       { value: "grazing", label: "Grazing Table / Station" },
       { value: "other", label: "Other" },
+      { value: "corporate-lunch", label: "Corporate Lunch / Office Lunch" },
     ],
     serviceTypes: [
       { value: "", label: "Select service type" },

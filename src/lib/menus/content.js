@@ -154,15 +154,11 @@ export function applyMenusForm(form) {
         label: merged.custom.ctaLabel,
       },
     },
-    cta: {
-      ...menusPage.cta,
-      eyebrow: merged.cta.eyebrow,
-      heading: merged.cta.heading,
-      copy: merged.cta.copy,
-      button: {
-        ...menusPage.cta.button,
-        label: merged.cta.buttonLabel,
-      },
-    },
+    intro: menusPage.intro,
+    yacht: menusPage.yacht,
+    celebrations: menusPage.celebrations,
+    customEvents: menusPage.customEvents,
+    disclaimer: menusPage.disclaimer,
+    cta: menusPage.cta,
   };
 }

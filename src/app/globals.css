@@ -16,6 +16,11 @@
   --gold-soft: #cbb07a;
   --stone: #857d6c;
   --line: rgba(45, 49, 40, 0.12);
+  --menu-preview-gap: 1.5rem;
+  --menu-preview-width: 26.25rem;
+  --menu-pair-gap: 5rem;
+  --menu-custom-col-gap: 5.5rem;
+  --menu-custom-row-gap: 5.5rem;
 }
 
 @theme inline {
@@ -83,7 +88,56 @@ body {
   top: 1rem;
 }
 
+.menu-preview-card {
+  width: var(--menu-preview-width);
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  align-self: start;
+  justify-self: start;
+}
+
+.menu-preview-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1530 / 1980;
+  height: auto;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold) 25%, transparent);
+  background: #f6f0e2;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.menu-preview-frame:hover,
+.menu-preview-frame:focus-visible {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.menu-preview-image {
+  object-fit: contain;
+  object-position: center;
+}
+
 @media (min-width: 1024px) {
+  :root {
+    --menu-preview-width: calc((min(100vw, 1360px) - 6rem - 2 * var(--menu-preview-gap)) / 3);
+  }
+
+  .menu-preview-card {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .menu-preview-image {
+    object-position: left center;
+  }
+
   .skip-link {
     font-size: 0.96rem;
   }

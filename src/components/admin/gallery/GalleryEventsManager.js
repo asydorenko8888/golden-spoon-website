@@ -4,12 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { getSupabaseEnv } from "@/lib/supabase/env";
 import { formatGalleryEventDate } from "@/lib/gallery/events";
+import { getEventPresentation } from "@/lib/gallery/eventPresentation";
 import {
   galleryStoragePathFromUrl,
   isMissingGalleryVideoColumnError,
   preparePlayableEventVideo,
   VIDEO_CONVERT_ERROR,
 } from "@/lib/gallery/eventMedia";
+import { mixEventPhotos, photosAlreadyMixed } from "@/lib/gallery/mixEventPhotos";
 
 const BUCKET = "gallery";
 const MAX_BYTES = 6 * 1024 * 1024;
@@ -1006,6 +1008,67 @@ export default function GalleryEventsManager() {
     setBusyId(null);
   }
 
+  function mixedPhotosForForm(photos) {
+    const presentation = getEventPresentation(form.id);
+    return mixEventPhotos(photos, {
+      excludePhotoIds: presentation.excludePhotoIds,
+      leadCount: presentation.photoLayout === "collage" ? 2 : 3,
+    });
+  }
+
+  async function mixPhotos() {
+    if (form.photos.length < 2) return;
+
+    const mixed = mixedPhotosForForm(form.photos);
+    if (photosAlreadyMixed(form.photos, mixed)) {
+      showMessage("success", "Photos are already in a mixed story order.");
+      return;
+    }
+
+    const previous = form.photos;
+    setBusyId("mix-photos");
+    setForm((current) => ({ ...current, photos: mixed }));
+
+    if (!form.id) {
+      setBusyId(null);
+      showMessage("success", "Photo order mixed. It will save with the event.");
+      return;
+    }
+
+    const supabase = createClient();
+    const offset = 1000;
+    for (let index = 0; index < mixed.length; index += 1) {
+      const { error } = await supabase
+        .from("gallery_event_photos")
+        .update({ sort_order: offset + index })
+        .eq("id", mixed[index].id)
+        .eq("event_id", form.id);
+      if (error) {
+        setForm((current) => ({ ...current, photos: previous }));
+        setBusyId(null);
+        showMessage("error", "Could not mix photo order.");
+        return;
+      }
+    }
+
+    for (const photo of mixed) {
+      const { error } = await supabase
+        .from("gallery_event_photos")
+        .update({ sort_order: photo.sort_order })
+        .eq("id", photo.id)
+        .eq("event_id", form.id);
+      if (error) {
+        setForm((current) => ({ ...current, photos: previous }));
+        setBusyId(null);
+        showMessage("error", "Could not mix photo order.");
+        return;
+      }
+    }
+
+    setBusyId(null);
+    showMessage("success", "Photo order mixed into a curated event story.");
+  }
+
   async function deletePhoto(photo) {
     const confirmed = window.confirm("Delete this photo from the event?");
     if (!confirmed) return;
@@ -1305,7 +1368,9 @@ export default function GalleryEventsManager() {
               JPG, PNG, or WEBP. Max 6 MB each. You can select multiple photos.
               {!form.id
                 ? " New photos are uploaded when you save the event."
-                : null}
+                : null}{" "}
+              Mix Photos saves a stable food / people / atmosphere rhythm. Manual
+              Move up / Move down still works afterward.
             </p>
             <input
               ref={fileInputRef}
@@ -1315,14 +1380,29 @@ export default function GalleryEventsManager() {
               className="sr-only"
               onChange={onUploadSelected}
             />
-            <button
-              type="button"
-              disabled={uploading || saving}
-              onClick={() => fileInputRef.current?.click()}
-              className="rounded-md border border-neutral-300 px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-neutral-700 uppercase disabled:opacity-60"
-            >
-              {uploading ? uploadStatus || "Uploading…" : "Upload photos"}
-            </button>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={uploading || saving}
+                onClick={() => fileInputRef.current?.click()}
+                className="rounded-md border border-neutral-300 px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-neutral-700 uppercase disabled:opacity-60"
+              >
+                {uploading ? uploadStatus || "Uploading…" : "Upload photos"}
+              </button>
+              <button
+                type="button"
+                disabled={
+                  uploading ||
+                  saving ||
+                  form.photos.length < 2 ||
+                  busyId === "mix-photos"
+                }
+                onClick={() => mixPhotos()}
+                className="rounded-md border border-neutral-300 px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-neutral-700 uppercase disabled:opacity-60"
+              >
+                {busyId === "mix-photos" ? "Mixing…" : "Mix Photos"}
+              </button>
+            </div>
 
             {pendingFiles.length > 0 ? (
               <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">

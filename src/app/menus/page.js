@@ -1,8 +1,11 @@
 import ValuesStrip from "@/components/about/ValuesStrip";
 import GalleryCta from "@/components/gallery/GalleryCta";
-import CustomMenu from "@/components/menus/CustomMenu";
-import MenuCollections from "@/components/menus/MenuCollections";
+import CelebrationMenus from "@/components/menus/CelebrationMenus";
+import CustomEventMenus from "@/components/menus/CustomEventMenus";
+import MenuDisclaimer from "@/components/menus/MenuDisclaimer";
+import MenuIntro from "@/components/menus/MenuIntro";
 import MenusHero from "@/components/menus/MenusHero";
+import YachtCollections from "@/components/menus/YachtCollections";
 import { getPublicMenusContent } from "@/lib/menus/getPublicMenusContent";
 import { site } from "@/data/siteContent";
 
@@ -21,8 +24,11 @@ export default async function MenusPage() {
     <>
       <MenusHero content={content.hero} />
       <ValuesStrip items={content.strip} />
-      <MenuCollections content={content.collections} />
-      <CustomMenu content={content.custom} />
+      <MenuIntro content={content.intro} />
+      <YachtCollections content={content.yacht} />
+      <CelebrationMenus content={content.celebrations} />
+      <CustomEventMenus sections={content.customEvents} />
+      <MenuDisclaimer copy={content.disclaimer} />
       <GalleryCta content={content.cta} />
     </>
   );

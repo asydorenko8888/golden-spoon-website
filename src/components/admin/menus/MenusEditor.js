@@ -7,6 +7,8 @@ import {
   getDefaultMenusForm,
   mergeMenusForm,
 } from "@/lib/menus/content";
+import MenuImageField from "@/components/admin/menus/MenuImageField";
+import MenuItemsManager from "@/components/admin/menus/MenuItemsManager";
 
 function Field({ id, label, hint, children }) {
   return (
@@ -77,6 +79,10 @@ export default function MenusEditor() {
     };
   }, []);
 
+  function showMessage(type, text) {
+    setMessage(text ? { type, text } : null);
+  }
+
   function updateSection(section, field, value) {
     setForm((current) => ({
       ...current,
@@ -90,18 +96,6 @@ export default function MenusEditor() {
       strip: current.strip.map((item, itemIndex) =>
         itemIndex === index ? { ...item, [field]: value } : item,
       ),
-    }));
-  }
-
-  function updateCollectionItem(index, field, value) {
-    setForm((current) => ({
-      ...current,
-      collections: {
-        ...current.collections,
-        items: current.collections.items.map((item, itemIndex) =>
-          itemIndex === index ? { ...item, [field]: value } : item,
-        ),
-      },
     }));
   }
 
@@ -125,12 +119,12 @@ export default function MenusEditor() {
         );
       }
 
-      setMessage({ type: "success", text: "Menus page content saved." });
+      showMessage("success", "Menus page content saved.");
     } catch (error) {
-      setMessage({
-        type: "error",
-        text: error instanceof Error ? error.message : "Save failed.",
-      });
+      showMessage(
+        "error",
+        error instanceof Error ? error.message : "Save failed.",
+      );
     } finally {
       setSaving(false);
     }
@@ -142,14 +136,14 @@ export default function MenusEditor() {
         Menus
       </h1>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
-        Edit the existing Menus page copy. Images, order, and layout stay the
-        same.
+        Manage the current public Menus page: hero, information strip, intro,
+        yacht collections, private celebrations, and custom event menus.
       </p>
 
       {loading ? (
         <p className="mt-8 text-sm text-neutral-500">Loading Menus content…</p>
       ) : (
-        <form onSubmit={onSave} className="mt-8 max-w-3xl space-y-10">
+        <form onSubmit={onSave} className="mt-8 max-w-4xl space-y-10">
           <fieldset className="space-y-4 rounded-lg border border-neutral-200 bg-white p-5">
             <legend className="px-1 text-sm font-semibold tracking-wide text-neutral-800 uppercase">
               Hero
@@ -198,6 +192,15 @@ export default function MenusEditor() {
                 className={inputClass}
               />
             </Field>
+            <MenuImageField
+              id="menus-hero-image"
+              image={form.hero.image}
+              folder="hero"
+              onChange={(image) => updateSection("hero", "image", image)}
+              onError={(text) => {
+                if (text) showMessage("error", text);
+              }}
+            />
           </fieldset>
 
           <fieldset className="space-y-6 rounded-lg border border-neutral-200 bg-white p-5">
@@ -225,7 +228,7 @@ export default function MenusEditor() {
                 </Field>
                 <Field
                   id={`menus-strip-copy-${index}`}
-                  label="Text"
+                  label="Supporting text"
                   hint="Use a new line to keep the current two-line layout."
                 >
                   <textarea
@@ -244,205 +247,169 @@ export default function MenusEditor() {
 
           <fieldset className="space-y-4 rounded-lg border border-neutral-200 bg-white p-5">
             <legend className="px-1 text-sm font-semibold tracking-wide text-neutral-800 uppercase">
-              Catering collections
+              Intro
             </legend>
-            <Field id="menus-collections-eyebrow" label="Eyebrow">
+            <Field id="menus-intro-heading-1" label="Heading line 1">
               <input
-                id="menus-collections-eyebrow"
+                id="menus-intro-heading-1"
                 type="text"
-                value={form.collections.eyebrow}
+                value={form.intro.headingLine1}
                 onChange={(event) =>
-                  updateSection("collections", "eyebrow", event.target.value)
+                  updateSection("intro", "headingLine1", event.target.value)
                 }
                 className={inputClass}
               />
             </Field>
-            <Field id="menus-collections-heading-1" label="Heading line 1">
+            <Field id="menus-intro-heading-2" label="Heading line 2">
               <input
-                id="menus-collections-heading-1"
+                id="menus-intro-heading-2"
                 type="text"
-                value={form.collections.headingLine1}
+                value={form.intro.headingLine2}
                 onChange={(event) =>
-                  updateSection("collections", "headingLine1", event.target.value)
+                  updateSection("intro", "headingLine2", event.target.value)
                 }
                 className={inputClass}
               />
             </Field>
-            <Field id="menus-collections-heading-2" label="Heading line 2">
-              <input
-                id="menus-collections-heading-2"
-                type="text"
-                value={form.collections.headingLine2}
-                onChange={(event) =>
-                  updateSection("collections", "headingLine2", event.target.value)
-                }
-                className={inputClass}
-              />
-            </Field>
-            <Field id="menus-collections-copy" label="Introduction">
+            <Field id="menus-intro-copy" label="Body text">
               <textarea
-                id="menus-collections-copy"
-                rows={3}
-                value={form.collections.copy}
-                onChange={(event) =>
-                  updateSection("collections", "copy", event.target.value)
-                }
-                className={inputClass}
-              />
-            </Field>
-          </fieldset>
-
-          <div className="space-y-6">
-            <h2 className="text-sm font-semibold tracking-wide text-neutral-800 uppercase">
-              Collection items
-            </h2>
-            {form.collections.items.map((item, index) => (
-              <fieldset
-                key={item.number}
-                className="space-y-4 rounded-lg border border-neutral-200 bg-white p-5"
-              >
-                <legend className="px-1 text-sm font-semibold tracking-wide text-neutral-800 uppercase">
-                  {Number(item.number)}. {item.title || "Collection item"}
-                </legend>
-                <Field id={`menus-item-title-${item.number}`} label="Title">
-                  <input
-                    id={`menus-item-title-${item.number}`}
-                    type="text"
-                    value={item.title}
-                    onChange={(event) =>
-                      updateCollectionItem(index, "title", event.target.value)
-                    }
-                    className={inputClass}
-                  />
-                </Field>
-                <Field
-                  id={`menus-item-note-${item.number}`}
-                  label="Note"
-                  hint="Leave blank to keep the current placeholder lines on the page."
-                >
-                  <textarea
-                    id={`menus-item-note-${item.number}`}
-                    rows={2}
-                    value={item.note}
-                    onChange={(event) =>
-                      updateCollectionItem(index, "note", event.target.value)
-                    }
-                    className={inputClass}
-                  />
-                </Field>
-              </fieldset>
-            ))}
-          </div>
-
-          <fieldset className="space-y-4 rounded-lg border border-neutral-200 bg-white p-5">
-            <legend className="px-1 text-sm font-semibold tracking-wide text-neutral-800 uppercase">
-              Custom menu
-            </legend>
-            <Field id="menus-custom-eyebrow" label="Eyebrow">
-              <input
-                id="menus-custom-eyebrow"
-                type="text"
-                value={form.custom.eyebrow}
-                onChange={(event) =>
-                  updateSection("custom", "eyebrow", event.target.value)
-                }
-                className={inputClass}
-              />
-            </Field>
-            <Field id="menus-custom-heading-1" label="Heading line 1">
-              <input
-                id="menus-custom-heading-1"
-                type="text"
-                value={form.custom.headingLine1}
-                onChange={(event) =>
-                  updateSection("custom", "headingLine1", event.target.value)
-                }
-                className={inputClass}
-              />
-            </Field>
-            <Field id="menus-custom-heading-2" label="Heading line 2">
-              <input
-                id="menus-custom-heading-2"
-                type="text"
-                value={form.custom.headingLine2}
-                onChange={(event) =>
-                  updateSection("custom", "headingLine2", event.target.value)
-                }
-                className={inputClass}
-              />
-            </Field>
-            <Field id="menus-custom-copy" label="Body copy">
-              <textarea
-                id="menus-custom-copy"
+                id="menus-intro-copy"
                 rows={4}
-                value={form.custom.copy}
+                value={form.intro.copy}
                 onChange={(event) =>
-                  updateSection("custom", "copy", event.target.value)
+                  updateSection("intro", "copy", event.target.value)
                 }
                 className={inputClass}
               />
             </Field>
-            <Field id="menus-custom-cta" label="CTA label">
-              <input
-                id="menus-custom-cta"
-                type="text"
-                value={form.custom.ctaLabel}
+            <Field id="menus-intro-price" label="Italic pricing note">
+              <textarea
+                id="menus-intro-price"
+                rows={3}
+                value={form.intro.priceGuidance}
                 onChange={(event) =>
-                  updateSection("custom", "ctaLabel", event.target.value)
+                  updateSection("intro", "priceGuidance", event.target.value)
                 }
                 className={inputClass}
               />
             </Field>
+            <MenuImageField
+              id="menus-intro-image"
+              image={form.intro.image}
+              folder="intro"
+              onChange={(image) => updateSection("intro", "image", image)}
+              onError={(text) => {
+                if (text) showMessage("error", text);
+              }}
+            />
           </fieldset>
 
           <fieldset className="space-y-4 rounded-lg border border-neutral-200 bg-white p-5">
             <legend className="px-1 text-sm font-semibold tracking-wide text-neutral-800 uppercase">
-              Closing CTA
+              Yacht Catering Collections
             </legend>
-            <Field id="menus-cta-eyebrow" label="Eyebrow">
+            <Field id="menus-yacht-eyebrow" label="Section eyebrow">
               <input
-                id="menus-cta-eyebrow"
+                id="menus-yacht-eyebrow"
                 type="text"
-                value={form.cta.eyebrow}
+                value={form.yacht.eyebrow}
                 onChange={(event) =>
-                  updateSection("cta", "eyebrow", event.target.value)
+                  updateSection("yacht", "eyebrow", event.target.value)
                 }
                 className={inputClass}
               />
             </Field>
-            <Field id="menus-cta-heading" label="Heading">
-              <input
-                id="menus-cta-heading"
-                type="text"
-                value={form.cta.heading}
-                onChange={(event) =>
-                  updateSection("cta", "heading", event.target.value)
-                }
-                className={inputClass}
-              />
-            </Field>
-            <Field id="menus-cta-copy" label="Supporting line">
+            <Field id="menus-yacht-note" label="Section note">
               <textarea
-                id="menus-cta-copy"
+                id="menus-yacht-note"
                 rows={3}
-                value={form.cta.copy}
+                value={form.yacht.attendantNote}
                 onChange={(event) =>
-                  updateSection("cta", "copy", event.target.value)
+                  updateSection("yacht", "attendantNote", event.target.value)
                 }
                 className={inputClass}
               />
             </Field>
-            <Field id="menus-cta-button" label="CTA label">
+            <MenuItemsManager
+              sectionId="yacht"
+              items={form.yacht.items}
+              folder="yacht"
+              showPrice
+              showMinimum
+              onChange={(items) => updateSection("yacht", "items", items)}
+              onError={(text) => {
+                if (text) showMessage("error", text);
+              }}
+            />
+          </fieldset>
+
+          <fieldset className="space-y-4 rounded-lg border border-neutral-200 bg-white p-5">
+            <legend className="px-1 text-sm font-semibold tracking-wide text-neutral-800 uppercase">
+              Private Celebrations
+            </legend>
+            <Field id="menus-celebrations-eyebrow" label="Section eyebrow">
               <input
-                id="menus-cta-button"
+                id="menus-celebrations-eyebrow"
                 type="text"
-                value={form.cta.buttonLabel}
+                value={form.celebrations.eyebrow}
                 onChange={(event) =>
-                  updateSection("cta", "buttonLabel", event.target.value)
+                  updateSection("celebrations", "eyebrow", event.target.value)
                 }
                 className={inputClass}
               />
             </Field>
+            <Field id="menus-celebrations-copy" label="Introduction">
+              <textarea
+                id="menus-celebrations-copy"
+                rows={3}
+                value={form.celebrations.copy}
+                onChange={(event) =>
+                  updateSection("celebrations", "copy", event.target.value)
+                }
+                className={inputClass}
+              />
+            </Field>
+            <Field id="menus-celebrations-note" label="Supporting note">
+              <textarea
+                id="menus-celebrations-note"
+                rows={3}
+                value={form.celebrations.note}
+                onChange={(event) =>
+                  updateSection("celebrations", "note", event.target.value)
+                }
+                className={inputClass}
+              />
+            </Field>
+            <MenuItemsManager
+              sectionId="celebrations"
+              items={form.celebrations.items}
+              folder="celebrations"
+              showPrice
+              onChange={(items) =>
+                updateSection("celebrations", "items", items)
+              }
+              onError={(text) => {
+                if (text) showMessage("error", text);
+              }}
+            />
+          </fieldset>
+
+          <fieldset className="space-y-4 rounded-lg border border-neutral-200 bg-white p-5">
+            <legend className="px-1 text-sm font-semibold tracking-wide text-neutral-800 uppercase">
+              Custom Event Menus
+            </legend>
+            <MenuItemsManager
+              sectionId="custom"
+              items={form.customEvents.items}
+              folder="custom"
+              titleMultiline
+              onChange={(items) =>
+                updateSection("customEvents", "items", items)
+              }
+              onError={(text) => {
+                if (text) showMessage("error", text);
+              }}
+            />
           </fieldset>
 
           {message ? (
@@ -460,7 +427,7 @@ export default function MenusEditor() {
             disabled={saving}
             className="rounded-md bg-[#B5935A] px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-white uppercase transition-colors hover:bg-[#9a7b45] disabled:opacity-60"
           >
-            {saving ? "Saving…" : "Save"}
+            {saving ? "Saving…" : "Save Changes"}
           </button>
         </form>
       )}

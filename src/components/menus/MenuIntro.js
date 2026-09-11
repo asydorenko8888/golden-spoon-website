@@ -26,10 +26,10 @@ export default function MenuIntro({ content }) {
           </div>
           <div className="hidden min-w-0 lg:block">
             <Image
-              src="/images/menus/menu-fan.png"
-              alt="Golden Spoon Classic Celebration, Premium Celebration, and Yacht Collection menu cards."
-              width={1536}
-              height={1024}
+              src={content.image.src}
+              alt={content.image.alt}
+              width={content.image.width || 1536}
+              height={content.image.height || 1024}
               className="h-auto w-full object-contain"
               sizes="(min-width: 1024px) 40vw, 0px"
             />

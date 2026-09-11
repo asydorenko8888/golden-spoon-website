@@ -21,7 +21,7 @@ export default async function MenusPage() {
   const content = await getPublicMenusContent();
 
   return (
-    <>
+    <div className="menus-page">
       <MenusHero content={content.hero} />
       <ValuesStrip items={content.strip} />
       <MenuIntro content={content.intro} />
@@ -30,6 +30,6 @@ export default async function MenusPage() {
       <CustomEventMenus sections={content.customEvents} />
       <MenuDisclaimer copy={content.disclaimer} />
       <GalleryCta content={content.cta} />
-    </>
+    </div>
   );
 }

@@ -124,6 +124,54 @@ body {
   object-position: center;
 }
 
+@media (max-width: 767px) {
+  .menus-page,
+  .menus-page section,
+  .menus-page .menus-container,
+  .menus-page ul,
+  .menus-page li {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .menus-page .menus-container {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .menus-page h1,
+  .menus-page h2,
+  .menus-page h3,
+  .menus-page p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .menus-page .menu-preview-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    justify-self: stretch;
+  }
+
+  .menus-page .menu-preview-frame {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: var(--menu-image-ratio, 1530 / 1980);
+  }
+
+  .menus-page .menu-preview-image {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
 @media (min-width: 1024px) {
   :root {
     --menu-preview-width: calc((min(100vw, 1360px) - 6rem - 2 * var(--menu-preview-gap)) / 3);

@@ -4,7 +4,7 @@ import MenuGraphic from "@/components/menus/MenuGraphic";
 export default function YachtCollections({ content }) {
   return (
     <section className="bg-ivory">
-      <Container className="pt-12">
+      <Container className="menus-container pt-12">
         <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
           {content.eyebrow}
         </p>
@@ -16,7 +16,7 @@ export default function YachtCollections({ content }) {
           {content.collections.map((item, index) => (
             <li
               key={item.id}
-              className="mx-auto w-[var(--menu-preview-width)] max-w-full min-w-0"
+              className="mx-auto w-full max-w-full min-w-0 lg:w-[var(--menu-preview-width)]"
             >
               <p className="font-serif text-[0.95rem] leading-[1.15] font-medium tracking-tight text-ink uppercase lg:min-h-[2.3rem] lg:text-[1.05rem]">
                 {item.title}

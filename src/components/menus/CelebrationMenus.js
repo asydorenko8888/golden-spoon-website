@@ -4,7 +4,7 @@ import MenuGraphic from "@/components/menus/MenuGraphic";
 export default function CelebrationMenus({ content }) {
   return (
     <section className="bg-ivory">
-      <Container className="pt-[4.5rem] lg:pt-24">
+      <Container className="menus-container pt-[4.5rem] lg:pt-24">
         <div className="w-full">
           <p className="text-[0.68rem] font-medium tracking-[0.26em] text-gold uppercase lg:text-[0.816rem]">
             {content.eyebrow}
@@ -17,11 +17,11 @@ export default function CelebrationMenus({ content }) {
           </p>
         </div>
 
-        <ul className="mx-auto mt-8 grid w-full max-w-[var(--menu-preview-width)] grid-cols-1 gap-14 lg:ml-0 lg:mr-auto lg:max-w-[calc(var(--menu-preview-width)*2+var(--menu-pair-gap))] lg:grid-cols-2 lg:items-start lg:gap-x-[var(--menu-pair-gap)]">
+        <ul className="mx-auto mt-8 grid w-full max-w-full grid-cols-1 gap-14 lg:ml-0 lg:mr-auto lg:max-w-[calc(var(--menu-preview-width)*2+var(--menu-pair-gap))] lg:grid-cols-2 lg:items-start lg:gap-x-[var(--menu-pair-gap)]">
           {content.items.map((item) => (
             <li
               key={item.title}
-              className="mx-auto w-[var(--menu-preview-width)] max-w-full min-w-0 lg:mx-0"
+              className="mx-auto w-full max-w-full min-w-0 lg:mx-0 lg:w-[var(--menu-preview-width)]"
             >
               <p className="font-serif text-[0.95rem] leading-[1.15] font-medium tracking-tight break-words text-ink uppercase lg:min-h-[2.3rem] lg:text-[1.05rem]">
                 {item.title}

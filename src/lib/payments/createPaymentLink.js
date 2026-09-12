@@ -77,3 +77,41 @@ export async function createPaymentLink({ clientId, paymentType }) {
     url: payload.url,
   };
 }
+
+export async function sendPaymentLinkEmail({ clientId, paymentType, paymentUrl }) {
+  const response = await fetch("/api/admin/stripe/payment-link-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+    body: JSON.stringify({
+      client_id: clientId,
+      payment_type: paymentType,
+      payment_url: paymentUrl,
+    }),
+  });
+
+  let payload = {};
+  try {
+    payload = await response.json();
+  } catch {
+    payload = {};
+  }
+
+  if (!response.ok) {
+    return {
+      ok: false,
+      email: null,
+      error: payload?.error || "email_failed",
+      message:
+        payload?.message ||
+        "The payment link email could not be sent. Please try again.",
+    };
+  }
+
+  return {
+    ok: true,
+    email: typeof payload?.email === "string" ? payload.email : null,
+  };
+}

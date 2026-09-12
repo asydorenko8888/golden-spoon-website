@@ -25,9 +25,14 @@ import {
   getPaymentProviderLabel,
 } from "@/lib/payments/createPaymentLink";
 import PaymentLinkDialog from "@/components/admin/clients/PaymentLinkDialog";
+import SendPaymentLinkDialog from "@/components/admin/clients/SendPaymentLinkDialog";
 
 const inputClass =
   "w-full rounded-md border border-neutral-300 px-3 py-2 text-sm text-neutral-900 outline-none focus:border-[#B5935A]";
+
+function hasValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value ?? "").trim());
+}
 
 function Detail({ label, value }) {
   return (
@@ -55,6 +60,7 @@ export default function ClientDetail({ clientId, paymentReturn = null }) {
   const [deleting, setDeleting] = useState(false);
   const [paymentDraft, setPaymentDraft] = useState(null);
   const [createdPaymentLink, setCreatedPaymentLink] = useState(null);
+  const [sendPaymentDraft, setSendPaymentDraft] = useState(null);
   const [linkCopied, setLinkCopied] = useState(false);
   const [message, setMessage] = useState(
     supabaseConfigured
@@ -235,6 +241,9 @@ export default function ClientDetail({ clientId, paymentReturn = null }) {
     CLIENT_STATUSES.find((item) => item.value === status)?.meaning ?? "";
   const financials = deriveFinancials(proposalAmount, depositPaid);
   const paymentLinks = getPaymentLinkAvailability(financials);
+  const canSendPaymentLink = Boolean(
+    createdPaymentLink?.url && hasValidEmail(client?.email),
+  );
 
   function openPaymentDraft(paymentType, amount) {
     setPaymentDraft({
@@ -485,6 +494,24 @@ export default function ClientDetail({ clientId, paymentReturn = null }) {
                     >
                       Open payment page
                     </a>
+                    {canSendPaymentLink ? (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setSendPaymentDraft({
+                            clientId,
+                            paymentType: createdPaymentLink.paymentType,
+                            url: createdPaymentLink.url,
+                            amount: createdPaymentLink.amount,
+                            clientName: client?.name ?? "",
+                            clientEmail: client?.email ?? "",
+                          })
+                        }
+                        className="rounded-md bg-[#B5935A] px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-white uppercase transition-colors hover:bg-[#9a7b45]"
+                      >
+                        Send payment link
+                      </button>
+                    ) : null}
                   </div>
                 </div>
               ) : null}
@@ -581,6 +608,23 @@ export default function ClientDetail({ clientId, paymentReturn = null }) {
             onCreated={(link) => {
               setCreatedPaymentLink(link);
               setLinkCopied(false);
+            }}
+          />
+          <SendPaymentLinkDialog
+            draft={sendPaymentDraft}
+            onClose={() => setSendPaymentDraft(null)}
+            onSent={(email) => {
+              setSendPaymentDraft(null);
+              setMessage({
+                type: "success",
+                text: `Payment link sent successfully to ${email}`,
+              });
+            }}
+            onError={(text) => {
+              setMessage({
+                type: "error",
+                text,
+              });
             }}
           />
         </div>

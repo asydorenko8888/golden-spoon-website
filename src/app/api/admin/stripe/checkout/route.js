@@ -1,4 +1,3 @@
-import { createServiceClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { getCheckoutAmountFromClient } from "@/lib/payments/checkoutAmount";
 import { PAYMENT_TYPES } from "@/lib/payments/createPaymentLink";
@@ -58,35 +57,21 @@ export async function POST(request) {
     );
   }
 
-  let client;
-  try {
-    const admin = createServiceClient();
-    const { data, error } = await admin
-      .from("clients")
-      .select(
-        "id, name, email, event_date, event_type, proposal_amount, deposit_paid, deposit_required, balance_due",
-      )
-      .eq("id", clientId)
-      .maybeSingle();
+  const { data: client, error: clientError } = await supabase
+    .from("clients")
+    .select(
+      "id, name, email, event_date, event_type, proposal_amount, deposit_paid, deposit_required, balance_due",
+    )
+    .eq("id", clientId)
+    .maybeSingle();
 
-    if (error) {
-      return Response.json(
-        {
-          error: "supabase_failure",
-          message: "Could not load this client from Supabase.",
-        },
-        { status: 500 },
-      );
-    }
-
-    client = data;
-  } catch {
+  if (clientError) {
     return Response.json(
       {
         error: "supabase_failure",
-        message: "Supabase service role is not configured.",
+        message: "Could not load this client from Supabase.",
       },
-      { status: 503 },
+      { status: 500 },
     );
   }
 

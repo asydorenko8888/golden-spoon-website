@@ -20,9 +20,9 @@ import {
 } from "@/lib/clients/finance";
 import {
   PAYMENT_TYPES,
+  PAYMENT_TYPE_LABELS,
   getPaymentLinkAvailability,
   getPaymentProviderLabel,
-  isPaymentProviderConfigured,
 } from "@/lib/payments/createPaymentLink";
 import PaymentLinkDialog from "@/components/admin/clients/PaymentLinkDialog";
 
@@ -40,7 +40,7 @@ function Detail({ label, value }) {
   );
 }
 
-export default function ClientDetail({ clientId }) {
+export default function ClientDetail({ clientId, paymentReturn = null }) {
   const router = useRouter();
   const supabaseConfigured = Boolean(getSupabaseEnv());
   const [client, setClient] = useState(null);
@@ -54,6 +54,8 @@ export default function ClientDetail({ clientId }) {
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [paymentDraft, setPaymentDraft] = useState(null);
+  const [createdPaymentLink, setCreatedPaymentLink] = useState(null);
+  const [linkCopied, setLinkCopied] = useState(false);
   const [message, setMessage] = useState(
     supabaseConfigured
       ? null
@@ -236,6 +238,7 @@ export default function ClientDetail({ clientId }) {
 
   function openPaymentDraft(paymentType, amount) {
     setPaymentDraft({
+      clientId,
       paymentType,
       amount,
       clientName: client?.name ?? "",
@@ -244,6 +247,20 @@ export default function ClientDetail({ clientId }) {
       eventDate: client?.event_date ?? "",
     });
   }
+
+  const paymentReturnMessage =
+    paymentReturn === "success"
+      ? {
+          type: "success",
+          text: "Stripe checkout finished. CRM payment totals update after Stripe confirms the payment.",
+        }
+      : paymentReturn === "cancelled"
+        ? {
+            type: "error",
+            text: "Stripe checkout was cancelled. No payment was recorded.",
+          }
+        : null;
+  const visibleMessage = message ?? paymentReturnMessage;
 
   return (
     <section>
@@ -264,13 +281,13 @@ export default function ClientDetail({ clientId }) {
         </Link>
       </div>
 
-      {message ? (
+      {visibleMessage ? (
         <p
           className={`mt-4 text-sm ${
-            message.type === "error" ? "text-red-700" : "text-emerald-700"
+            visibleMessage.type === "error" ? "text-red-700" : "text-emerald-700"
           }`}
         >
-          {message.text}
+          {visibleMessage.text}
         </p>
       ) : null}
 
@@ -431,12 +448,46 @@ export default function ClientDetail({ clientId }) {
                 Payment provider
               </p>
               <p className="mt-1 text-sm text-neutral-900">{getPaymentProviderLabel()}</p>
-              {isPaymentProviderConfigured() ? null : (
-                <p className="mt-3 text-sm leading-6 text-neutral-500">
-                  Payment link generation is ready. Connect a payment provider to
-                  activate secure checkout links.
-                </p>
-              )}
+              {createdPaymentLink ? (
+                <div className="mt-4 space-y-3 rounded-md border border-neutral-200 bg-neutral-50 p-3">
+                  <p className="text-[0.68rem] font-medium tracking-[0.12em] text-neutral-500 uppercase">
+                    Generated {PAYMENT_TYPE_LABELS[createdPaymentLink.paymentType] ?? "payment"} link
+                    {createdPaymentLink.amount
+                      ? ` · ${formatMoney(createdPaymentLink.amount)}`
+                      : ""}
+                  </p>
+                  <p className="break-all text-xs text-neutral-700">
+                    {createdPaymentLink.url}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          await navigator.clipboard.writeText(createdPaymentLink.url);
+                          setLinkCopied(true);
+                        } catch {
+                          setMessage({
+                            type: "error",
+                            text: "The payment link could not be copied.",
+                          });
+                        }
+                      }}
+                      className="rounded-md border border-neutral-300 px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-neutral-700 uppercase"
+                    >
+                      {linkCopied ? "Copied" : "Copy payment link"}
+                    </button>
+                    <a
+                      href={createdPaymentLink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md border border-neutral-300 px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-neutral-700 uppercase"
+                    >
+                      Open payment page
+                    </a>
+                  </div>
+                </div>
+              ) : null}
               <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
@@ -520,8 +571,17 @@ export default function ClientDetail({ clientId }) {
           </div>
           </form>
           <PaymentLinkDialog
+            key={
+              paymentDraft
+                ? `${paymentDraft.paymentType}-${paymentDraft.amount}`
+                : "closed"
+            }
             draft={paymentDraft}
             onClose={() => setPaymentDraft(null)}
+            onCreated={(link) => {
+              setCreatedPaymentLink(link);
+              setLinkCopied(false);
+            }}
           />
         </div>
       )}

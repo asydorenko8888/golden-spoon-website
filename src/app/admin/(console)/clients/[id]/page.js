@@ -1,6 +1,9 @@
 import ClientDetail from "@/components/admin/clients/ClientDetail";
 
-export default async function AdminClientDetailPage({ params }) {
+export default async function AdminClientDetailPage({ params, searchParams }) {
   const { id } = await params;
-  return <ClientDetail clientId={id} />;
+  const query = await searchParams;
+  const paymentReturn =
+    typeof query?.payment === "string" ? query.payment : null;
+  return <ClientDetail clientId={id} paymentReturn={paymentReturn} />;
 }

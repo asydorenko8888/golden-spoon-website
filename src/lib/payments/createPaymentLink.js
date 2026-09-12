@@ -9,11 +9,11 @@ export const PAYMENT_TYPE_LABELS = {
 };
 
 export function isPaymentProviderConfigured() {
-  return false;
+  return true;
 }
 
 export function getPaymentProviderLabel() {
-  return isPaymentProviderConfigured() ? "Connected" : "Not connected";
+  return "Stripe";
 }
 
 export function getPaymentLinkAvailability(financials) {
@@ -41,34 +41,39 @@ export function getPaymentLinkAvailability(financials) {
   };
 }
 
-export async function createPaymentLink({
-  clientId,
-  paymentType,
-  amount,
-  clientName,
-  clientEmail,
-  eventType,
-  eventDate,
-}) {
-  if (!isPaymentProviderConfigured()) {
+export async function createPaymentLink({ clientId, paymentType }) {
+  const response = await fetch("/api/admin/stripe/checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+    body: JSON.stringify({
+      client_id: clientId,
+      payment_type: paymentType,
+    }),
+  });
+
+  let payload = {};
+  try {
+    payload = await response.json();
+  } catch {
+    payload = {};
+  }
+
+  if (!response.ok || !payload?.url) {
     return {
       ok: false,
-      configured: false,
       url: null,
-      error: "payment_provider_not_configured",
+      error: payload?.error || "stripe_checkout_failed",
       message:
-        "Secure payment link generation will become available after the Golden Spoon payment account is connected.",
-      request: {
-        clientId,
-        paymentType,
-        amount,
-        clientName,
-        clientEmail,
-        eventType,
-        eventDate,
-      },
+        payload?.message ||
+        "The Stripe payment link could not be created. Please try again.",
     };
   }
 
-  throw new Error("Payment provider implementation is not available yet.");
+  return {
+    ok: true,
+    url: payload.url,
+  };
 }

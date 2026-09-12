@@ -8,7 +8,11 @@ import {
   createPaymentLink,
 } from "@/lib/payments/createPaymentLink";
 
-export default function PaymentLinkDialog({ draft, onClose, onCreated }) {
+function hasValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value ?? "").trim());
+}
+
+export default function PaymentLinkDialog({ draft, onClose, onCreated, onRequestSend }) {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState(null);
   const [createdUrl, setCreatedUrl] = useState(null);
@@ -152,6 +156,24 @@ export default function PaymentLinkDialog({ draft, onClose, onCreated }) {
               >
                 Open payment page
               </a>
+              {hasValidEmail(draft.clientEmail) ? (
+                <button
+                  type="button"
+                  onClick={() =>
+                    onRequestSend?.({
+                      clientId: draft.clientId,
+                      paymentType: draft.paymentType,
+                      url: createdUrl,
+                      amount: draft.amount,
+                      clientName: draft.clientName,
+                      clientEmail: draft.clientEmail,
+                    })
+                  }
+                  className="rounded-md bg-[#B5935A] px-4 py-2.5 text-xs font-medium tracking-[0.16em] text-white uppercase transition-colors hover:bg-[#9a7b45]"
+                >
+                  Send payment link
+                </button>
+              ) : null}
             </div>
           </div>
         ) : null}
